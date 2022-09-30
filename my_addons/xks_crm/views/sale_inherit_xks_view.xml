@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+     <!-- 修改报价form表单 -->
+    <record id="order_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">旭科晟销售报价表单视图</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <field name="audit_state" invisible="1"/>
+            </xpath>
+            <xpath expr="//button[@name='action_quotation_send']" position="attributes">
+                <attribute name="invisible">context.get('default_x_lead_status')</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='payment_action_capture']" position="after">
+                <!-- 新增报价申请按钮 -->
+                <button name="create_quote_request_xks_activity"
+                        type="object"
+                        class="oe_highlight"
+                        attrs = "{'invisible': [('audit_state', 'not in', ('defaul', 'reject') )] }"
+                        string="Request for Quote"/>
+                <!-- 新增同意报价按钮 -->
+                <button name="agree_quote_request_xks"
+                        type="object"
+                        class="oe_highlight"
+                        attrs = "{'invisible': [('audit_state', '!=', 'audit')] }"
+                        string="Agree Quotation"
+                        groups="sales_team.group_sale_manager"/>
+                <!-- 新增拒绝报价按钮 -->
+                <button name="reject_quote_request_xks"
+                        type="object"
+                        class="oe_highlight"
+                        attrs = "{'invisible': [('audit_state', '!=', 'audit')] }"
+                        string="Refuse Quotation"
+                        groups="sales_team.group_sale_manager"/>
+            </xpath>
+            <!-- 订单行新增备注 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree/field[@name='price_total']" position="after">
+                 <field name="x_remark"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']" position="attributes">
+                <attribute  name="mode">tree,form,kanban</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree" position="replace">
+                 <tree string="Sales Order Lines">
+                       <control>
+                            <create name="add_product_control" string="Add a product"/>
+                            <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                            <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                       </control>
+
+                       <field name="sequence" widget="handle" />
+                       <field name="display_type" invisible="1"/>
+                       <field name="product_uom_category_id" invisible="1"/>
+                       <field name="product_updatable" invisible="1"/>
+                       <field name="product_id" invisible="1"
+                              attrs="{
+                                      'readonly': [('product_updatable', '=', False)],
+                                      'required': [('display_type', '=', False)],
+                              }"
+                              force_save="1"
+                              context="{
+                                        'partner_id': parent.partner_id,
+                                        'quantity': product_uom_qty,
+                                        'pricelist': parent.pricelist_id,
+                                        'uom':product_uom,
+                                        'company_id': parent.company_id,
+                                        'default_lst_price': price_unit,
+                                        'default_description_sale': name
+                              }"
+                              domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                              widget="product_configurator"/>
+                       <field name="product_template_id"
+                                      options="{'no_create_edit': True}"
+                                      string="Product"
+                                      attrs="{
+                                          'readonly': [('product_updatable', '=', False)],
+                                          'required': [('display_type', '=', False)],
+                                      }"
+                                      context="{
+                                          'partner_id': parent.partner_id,
+                                          'quantity': product_uom_qty,
+                                          'pricelist': parent.pricelist_id,
+                                          'uom':product_uom,
+                                          'company_id': parent.company_id,
+                                          'default_list_price': price_unit,
+                                          'default_description_sale': name
+                                      }"
+                                      domain="[('sale_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                      widget="product_configurator"/>
+                       <field name="product_model"/>
+                       <field name="optional_configure"/>
+                       <field name="name" widget="section_and_note_text" optional="show" attrs="{'column_invisible': '1'}"/>
+                       <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags"
+                              widget="many2many_tags" options="{'color_field': 'color'}"
+                              domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" />
+                       <field name="product_uom_qty"
+                               decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')"
+                                context="{
+                                            'partner_id': parent.partner_id,
+                                            'quantity': product_uom_qty,
+                                            'pricelist': parent.pricelist_id,
+                                            'uom': product_uom,
+                                            'company_id': parent.company_id
+                                        }" />
+                       <field name="qty_delivered"
+                              decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')"
+                              string="Delivered"
+                              attrs="{
+                                      'column_invisible': '1',
+                                      'readonly': [('qty_delivered_method', '!=', 'manual')]
+                              }" optional="show" />
+                       <field name="qty_delivered_manual" invisible="1"/>
+                       <field name="qty_delivered_method" invisible="1"/>
+                       <field name="qty_invoiced"
+                              decoration-info="(not display_type and invoice_status == 'to invoice')" decoration-bf="(not display_type and invoice_status == 'to invoice')"
+                              string="Invoiced"
+                              attrs="{'column_invisible': '1'}"
+                              optional="show" />
+                       <field name="qty_to_invoice" invisible="1"/>
+                       <field name="product_uom_readonly" invisible="1"/>
+                       <field name="product_uom" force_save="1" string="UoM"
+                              attrs="{
+                                     'readonly': [('product_uom_readonly', '=', True)],
+                                     'required': [('display_type', '=', False)],
+                              }"
+                              context="{'company_id': parent.company_id}" groups="uom.group_uom"
+                              options='{"no_open": True}' optional="show" />
+                       <field name="customer_lead" optional="hide"
+                              attrs="{'readonly': [('parent.state', 'not in', ['draft', 'sent', 'sale'])]}"/>
+                       <field name="product_packaging_qty" attrs="{'invisible': ['|', ('product_id', '=', False), ('product_packaging_id', '=', False)]}" groups="product.group_stock_packaging" optional="show"/>
+                       <field name="product_packaging_id" attrs="{'invisible': [('product_id', '=', False)]}" context="{'default_product_id': product_id, 'tree_view_ref':'product.product_packaging_tree_view', 'form_view_ref':'product.product_packaging_form_view'}" groups="product.group_stock_packaging" optional="show"/>
+                       <field name="price_unit" attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}" />
+                       <field name="tax_id" widget="many2many_tags" options="{'no_create': True}"
+                              domain="[('type_tax_use','=','sale'),('company_id','=',parent.company_id), ('country_id', '=', parent.tax_country_id)]"
+                              context="{'active_test': True}"
+                              attrs="{'readonly': [('qty_invoiced', '&gt;', 0)]}"
+                              optional="show" invisible="1"/>
+                       <field name="discount" string="Disc.%" groups="product.group_discount_per_so_line" optional="show" widget="product_discount"/>
+                       <field name="price_subtotal" widget="monetary" groups="account.group_show_line_subtotals_tax_excluded"/>
+                       <field name="price_total" widget="monetary" groups="account.group_show_line_subtotals_tax_included"/>
+                       <field name="state" invisible="1"/>
+                       <field name="invoice_status" invisible="1"/>
+                       <field name="currency_id" invisible="1"/>
+                       <field name="price_tax" invisible="1"/>
+                       <field name="company_id" invisible="1"/>
+                 </tree>
+            </xpath>
+            <!-- 订单行form视图隐藏结算单明细行 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/div[@name='invoice_lines']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏已交付 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group[1]/div[@name='delivered_qty']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group[1]/label[2]" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏已开票 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group[1]/div[@name='invoiced_qty']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group[1]/label[3]" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏税金设置 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group[1]/field[@name='tax_id']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏提前天数 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/form/group/group[2]" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行新增预付款支付百分比 -->
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']" position="after">
+                <group string="Pay">
+                    <group>
+                        <field name="advance_percentage" />
+                        <field name="middle_percentage" />
+                        <field name="balance_percentage" />
+                    </group>
+                    <group>
+                         <field name="advance_total" />
+                         <field name="middle_total" />
+                         <field name="balance_total" />
+                    </group>
+                </group>
+                <group string="Contract">
+                    <group>
+                        <h5>Contract Attachments</h5>
+                        <div name="button_box">
+                            <button name="action_get_contract__attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                <field name="x_contract_attachment_number" string="Upload Contract Attachments"/>
+                            </button>
+                        </div>
+                    </group>
+                    <group>
+                         <h5>PI Attachments</h5>
+                         <div name="button_box">
+                            <button name="action_get_pi__attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                <field name="x_pi_attachment_number" string="Upload PI Attachments"/>
+                            </button>
+                        </div>
+                    </group>
+                </group>
+<!--                <group string="Delivery Date">-->
+<!--                    <group>-->
+<!--                        <field name="delivery_date"/>-->
+<!--                    </group>-->
+<!--                </group>-->
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']" position="attributes">
+                <attribute  name="context">{'default_show_type': '1' }</attribute>
+            </xpath>
+            <!-- 新增项目方案page -->
+            <xpath expr="//page[@name='order_lines']" position="after">
+                <page string="Project Proposals" name="order_lines">
+                    <field name="leads_order_line_ids" widget="section_and_note_one2many" mode="tree" context="{'default_show_type': '1' }" >
+                        <tree string="Leads Order Lines" >
+                            <field name="sequence" widget="handle" />
+                            <field name="product_id" force_save="1"
+                                   invisible="1"
+                                   context="{
+                                            'partner_id': parent.partner_id,
+                                            'company_id': parent.company_id,
+                                            'default_description_sale': name
+                                   }"
+                                   domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                   widget="product_configurator" />
+                            <field name="product_template_id"
+                                      string="Product"
+                                      context="{
+                                          'partner_id': parent.partner_id,
+                                          'company_id': parent.company_id,
+                                          'default_description_sale': name
+                                      }"
+                                      domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                      widget="product_configurator"/>
+                            <field name="product_model"/>
+                            <field name="optional_configure"/>
+                            <field name="name" invisible="1"/>
+                            <field name="buy_number" />
+                            <field name="application_scenes" widget="section_and_note_text" optional="show"/>
+                            <field name="company_id" invisible="1"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="sequence" invisible="1"/>
+                                        <field name="product_id" force_save="1"
+                                                context="{
+                                                    'partner_id': parent.partner_id,
+                                                    'company_id': parent.company_id,
+                                                    'default_description_sale': name
+                                                }"
+                                                domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                                widget="product_configurator" />
+                                        <field name="optional_configure"/>
+                                        <field name="product_template_id" string="Product" invisible="1" widget="product_configurator"
+                                                context="{
+                                                    'partner_id': parent.partner_id,
+                                                    'company_id': parent.company_id,
+                                                    'default_description_sale': name
+                                                }"
+                                                domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" />
+                                        <field name="application_scenes" widget="section_and_note_text"/>
+                                        <field name="buy_number" />
+                                        <field name="company_id" invisible="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="product_model"/>
+                                        <field name="name"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+     <!-- 可选产品Page隐藏 -->
+     <record id="order_form_quote_inherit_xks" model="ir.ui.view">
+        <field name="name">旭科晟销售报价表单（引用拓展）视图</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_management.sale_order_form_quote" />
+        <field name="arch" type="xml">
+             <xpath expr="//page[@name='optional_products']" position="attributes">
+                 <attribute  name="attrs">{'invisible': 1 }</attribute>
+            </xpath>
+        </field>
+     </record>
+</odoo>

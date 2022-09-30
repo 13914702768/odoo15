@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="gbk" ?>
+<odoo>
+    <!-- tree视图 -->
+    <record id="product_produce_xks_tree_view" model="ir.ui.view">
+        <field name="name">product.produce.xks.tree</field>
+        <field name="model">product.produce.xks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="purchase_order_line_id" width="35%"/>
+                <field name="pruduce_state" width="30%"/>
+                <field name="update_time" width="30%"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_produce_xks_form_view" model="ir.ui.view">
+        <field name="name">product.produce.xks.form</field>
+        <field name="model">product.produce.xks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Purchase Order">
+                        <field name="purchase_order_line_id" options="{'no_open': True,'no_create': True}"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="pruduce_state"/>
+                        </group>
+                        <group>
+                            <field name="update_time" invisible="1"/>
+                            <field name="produce_complete"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group><field name="remark"/></group>
+                        <group>
+                            <group>
+                                <field name="x_produce_img"  placeholder="Add a Produce Img..."/>
+                            </group>
+                            <group></group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="product_produce_xks_action_window" model="ir.actions.act_window">
+        <field name="name">product.produce.xks.action</field>
+        <field name="res_model">product.produce.xks</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+</odoo>

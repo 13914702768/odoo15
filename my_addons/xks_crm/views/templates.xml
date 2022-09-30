@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+<!--
+        <template id="listing">
+          <ul>
+            <li t-foreach="objects" t-as="object">
+              <a t-attf-href="#{ root }/objects/#{ object.id }">
+                <t t-esc="object.display_name"/>
+              </a>
+            </li>
+          </ul>
+        </template>
+        <template id="object">
+          <h1><t t-esc="object.display_name"/></h1>
+          <dl>
+            <t t-foreach="object._fields" t-as="field">
+              <dt><t t-esc="field"/></dt>
+              <dd><t t-esc="object[field]"/></dd>
+            </t>
+          </dl>
+        </template>
+-->
+        <template id="accounttaxtotalsfield_xks" inherit_id="account.TaxTotalsField">
+            <xpath expr="//table" position="append">
+                <tr>
+                    <td class="o_td_label">
+                        <label class="o_form_label o_tax_total_label">Total</label>
+                    </td>
+                    <td>
+                        <span
+                            name="amount_total"
+                            t-att-class="Object.keys(totals.value.groups_by_subtotal).length > 0 ? 'oe_subtotal_footer_separator' : ''"
+                            t-esc="totals.value.formatted_amount_total"
+                            style="white-space: nowrap; font-weight: bold; font-size: 1.3em;"
+                        />
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+    </data>
+</odoo>

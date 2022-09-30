@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+     <!-- tree视图 -->
+    <record id="crm_produce_xks_tree_view" model="ir.ui.view">
+        <field name="name">旭科晟生产tree试图</field>
+        <field name="model">crm.produce.xks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="lead_id" string="商机" widget="selection"/>
+                <field name="product_id" string="产品" widget="product_configurator"/>
+                <field name="product_model_id"  string="型号"/>
+                <field name="factory_id" string="工厂"/>
+                <field name="price" string="单价"/>
+                <field name="currency_id" string="币种"/>
+                <field name="buy_number" string="数量"/>
+                <field name="advance_percentage" string="预付款比例"/>
+                <field name="advance_total" string="预付款金额"/>
+                <field name="balance_percentage" string="尾款比例"/>
+                <field name="balance_total" string="尾款金额"/>
+                <field name="remark" string="备注"/>
+                <field name="state_ids" string="状态" widget="one2many_list"/>
+                <field name="price_total" string="总价"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- form视图 -->
+    <record id="crm_produce_xks_form_view" model="ir.ui.view">
+        <field name="name">旭科晟生产form视图</field>
+        <field name="model">crm.produce.xks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="商机">
+                        <group>
+                            <field name="lead_id" string="商机" widget="selection"/>
+                        </group>
+                    </group>
+                    <group string="产品">
+                        <group>
+                            <field name="product_id"  force_save="1" widget="product_configurator" readonly="True"/>
+                            <field name="price" readonly="True"/>
+                            <field name="buy_number" readonly="True"/>
+                        </group>
+                        <group>
+                            <field name="product_model_id" readonly="True"/>
+                            <field name="currency_id" string="币种"/>
+                        </group>
+                    </group>
+                    <group string="支付">
+                        <group >
+                            <field name="advance_percentage" string="预付款比例"/>
+                            <field name="balance_percentage" string="尾款比例"/>
+                            <h5>合同附件</h5>
+                            <div name="button_box">
+                                <button name="action_get_contract_attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                    <field name="x_contract_attachment_number" string="上传合同附件"/>
+                                </button>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="advance_total" string="预付款金额"/>
+                            <field name="balance_total" string="尾款金额"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Produce State">
+                            <field name="state_ids" widget="section_and_note_one2many" mode="tree">
+                                <tree default_order="sequence,name desc">
+                                    <field name="name" string="状态"/>
+                                    <field name="sequence" string="排序"/>
+                                    <field name="operate_time" string="操作时间"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- search视图 -->
+    <record id="crm_produce_xks_search_view" model="ir.ui.view">
+        <field name="name">旭科晟生产search视图</field>
+        <field name="model">crm.produce.xks</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="lead_id" string="商机"/>
+                <field name="product_id" string="产品"/>
+                <field name="product_model_id" string="型号"/>
+                 <!-- 筛选条件 domain是筛选的条件 -->
+                <filter name="price_total" domain="[('price_total', '>', '30000')]"></filter>
+                <!-- 分组  -->
+                <group string="group by">
+                    <filter name="factory_id" string="工厂" context="{'group_by': 'factory_id'}"></filter>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="crm_produce_xks_action_window" model="ir.actions.act_window">
+        <field name="name">旭科晟生产</field>
+        <field name="res_model">crm.produce.xks</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>

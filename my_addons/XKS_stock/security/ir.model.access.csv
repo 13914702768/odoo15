@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_produce_xks_sale_salesman,crm.produce.xks,model_crm_produce_xks,sales_team.group_sale_salesman,1,1,1,1
+access_crm_produce_xks_all_leads,crm.produce.xks,model_crm_produce_xks,sales_team.group_sale_salesman_all_leads,1,1,1,1
+access_crm_produce_xks_manager,crm.produce.xks,model_crm_produce_xks,sales_team.group_sale_manager,1,1,1,1
+access_crm_produce_state_xks_sale_salesman,crm.produce.state.xks,model_crm_produce_state_xks,sales_team.group_sale_salesman,1,1,1,1
+access_crm_produce_state_xks_all_leads,crm.produce.state.xks,model_crm_produce_state_xks,sales_team.group_sale_salesman,1,1,1,1
+access_crm_produce_state_xks_manager,crm.produce.state.xks,model_crm_produce_state_xks,sales_team.group_sale_salesman,1,1,1,1
+access_crm_supplier_xks_sale_salesman,crm.supplier.xks,model_crm_supplier_xks,sales_team.group_sale_salesman,1,1,1,1
+access_crm_supplier_xks_all_leads,crm.supplier.xks,model_crm_supplier_xks,sales_team.group_sale_salesman,1,1,1,1
+access_crm_supplier_xks_manager,crm.supplier.xks,model_crm_supplier_xks,sales_team.group_sale_salesman,1,1,1,1

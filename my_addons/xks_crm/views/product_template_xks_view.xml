@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+
+    <record id="product_template_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">product.template.inherit.xks.from</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_standard_price']/div[@name='pricing']" position="after">
+                <field name="middle_quote" class="oe_inline" widget='monetary'
+                                        options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                <field name="reserve_quote" class="oe_inline" widget='monetary'
+                                        options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+            </xpath>
+        </field>
+    </record>
+	
+	<record id="product_template_common_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">product.template.inherit.xks.from</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']/group[1]" position="after">
+                <notebook>
+                    <page string="Product Parameter">
+                        <field name="parameter_ids" widget="section_and_note_one2many" mode="tree">
+                            <tree string="Product Parameter" editable="bottom">
+                                <field name="parameter_name"/>
+                                <field name="parameter_value"/>
+                                <field name="parameter_unit"/>
+                                <field name="remark"/>
+                                <field name="sequence"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Internal Notes">
+                        <field name="description" nolabel="1" placeholder="This note is only for internal purposes."/>
+                    </page>
+                </notebook>
+            </xpath>
+            <xpath expr="//page[@name='general_information']/group[2]" position="attributes">
+                <attribute  name="attrs">{'invisible': 1 }</attribute>
+            </xpath>
+        </field>
+     </record>
+
+</odoo>

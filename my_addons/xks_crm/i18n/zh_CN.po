@@ -1,0 +1,1297 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* xks_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20220622\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-02 01:47+0000\n"
+"PO-Revision-Date: 2022-08-02 01:47+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "), are you sure to create a new one?"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "<b attrs=\"{'invisible': [('is_company', '=', False)]}\">Address</b>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<i class=\"fa fa-gear\" role=\"img\" title=\"Switch to automatic "
+"probability\" aria-label=\"Switch to automatic probability\"/>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"fa fa-exclamation-triangle text-warning oe_edit_only\" "
+"title=\"By saving this change, the customer email will also be updated.\" "
+"attrs=\"{'invisible': [('partner_email_update', '=', False)]}\"/>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"fa fa-exclamation-triangle text-warning oe_edit_only\" "
+"title=\"By saving this change, the customer phone number will also be "
+"updated.\" attrs=\"{'invisible': [('partner_phone_update', '=', False)]}\"/>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('calendar_event_count', '&lt;', 2)]}\"> Meetings</span>\n"
+"                                    <span class=\"o_stat_text\" attrs=\"{'invisible': [('calendar_event_count', '&gt;', 1)]}\"> Meeting</span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('duplicate_lead_count', '&lt;', 2)]}\">Similar Leads</span>\n"
+"                                    <span class=\"o_stat_text\" attrs=\"{'invisible': [('duplicate_lead_count', '&gt;', 1)]}\">Similar Lead</span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"oe_grey p-2\" groups=\"crm.group_use_recurring_revenues\"> + </span>\n"
+"                                        <span class=\"oe_grey p-2\" groups=\"!crm.group_use_recurring_revenues\"> at </span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "<span class=\"oe_grey p-2\"> at </span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "<span class=\"oe_grey\"> %</span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid ""
+"A partner with the same <span><span class=\"o_vat_label\">Tax "
+"ID</span></span> already exists ("
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Add a description..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Address"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.actions.act_window,name:xks_crm.crm_xks_advance_confirmed
+msgid "Advance Confirmed Xks"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Agree Lead Application"
+msgstr "同意线索申请"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Analysis"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Archived"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "City"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Company Name..."
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_res_partner
+msgid "Contact"
+msgstr "联系人"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Contact Information"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_crm_lead2opportunity_partner
+msgid "Convert Lead to Opportunity (not in mass)"
+msgstr "转化线索为商机（单个）"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Country"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.actions.act_window,help:xks_crm.crm_xks_all_review_leads
+msgid "Create a Lead"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Create company"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Customer"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_res_partner__transactions_number
+#: model:ir.model.fields,field_description:xks_crm.field_res_users__transactions_number
+msgid "Deal Count"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "E.g. Monthly"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Email"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Extra Info"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Extra Information"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Advance Stage"
+msgstr "进入预付款阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Balance Stage"
+msgstr "进入尾款阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Business Negotiation Stage"
+msgstr "进入商务谈判阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Deal"
+msgstr "进入成交阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Examine Goods Stage"
+msgstr "进入验货阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Offer a Plan Stage"
+msgstr "进入提供方案阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Quote Stage"
+msgstr "进入提供报价阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Requirement Determination Stage"
+msgstr "进入确定需求阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Internal Notes"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_is_team_leader
+msgid "Is Team Leader"
+msgstr "是否团队管理员"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_leads_review_tree_view_xks
+msgid "Lead"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "线索/商机"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_leads_review_tree_view_xks
+msgid "Leads"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.ui.menu,name:xks_crm.menu_crm_leads_review
+msgid "Leads Audit"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.actions.act_window,name:xks_crm.crm_xks_all_review_leads
+msgid "Leads Xks"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.actions.act_window,help:xks_crm.crm_xks_all_review_leads
+msgid ""
+"Leads are the qualification step before the creation of an opportunity."
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_res_partner__leads_ids
+#: model:ir.model.fields,field_description:xks_crm.field_res_users__leads_ids
+msgid "Leads/Opportunity"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Lost"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Marketing"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Misc"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Mobile"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "More languages"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Opportunity Detail"
+msgstr "查看商机详情"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Partners"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Previous Orders"
+msgstr "往期订单"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_leads_review_tree_view_xks
+msgid "Probability (%)"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Refuse Leads"
+msgstr "拒接线索申请"
+
+#. module: xks_crm
+#: model:ir.ui.menu,name:xks_crm.menu_crm_old_customer
+msgid "Regular Customer"
+msgstr "老客户"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Remited Advance"
+msgstr "已收预付款"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Remited Balance"
+msgstr "已收尾款"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Request for Advance"
+msgstr "提交预付款审核"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Request for Balance"
+msgstr "提交尾款审核"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go To Balance Stage"
+msgstr "进入尾款阶段"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Delivery Payment Review"
+msgstr "提交发货款审核"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Submit Delivery Payment Review"
+msgstr "提交发货款审核"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "to be confirm Delivery Payment"
+msgstr "审核发货款"
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "State"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Street 2..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Street..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Tags..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "This email is blacklisted for mass mailings. Click to unblacklist."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"This phone number is blacklisted for SMS Marketing. Click to unblacklist."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Title"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Tracking"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Website"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Won"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "ZIP"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_kanban_view
+msgid "at"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. BE0477472701"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Brandom Freeman"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Lumber Inc"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Mister"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "e.g. Product Pricing"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Sales Director"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. https://www.odoo.com"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__10
+msgid "Disagree Quotation"
+msgstr "不同意报价"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__80
+msgid "Ship"
+msgstr "发货"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__9
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Agree Quotation"
+msgstr "同意报价"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__3
+msgid "Agree to apply for Business Opportunity"
+msgstr "同意申请商机"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__15
+msgid "Business Negotiation"
+msgstr "商务谈判"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__1
+msgid "Opportunity pending review"
+msgstr "商机待审核"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__50
+msgid "Arrange Production"
+msgstr "安排生产"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__4
+msgid "Perfect Customer Information"
+msgstr "客户信息完善"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_lead_status
+msgid "Current State"
+msgstr "当前状态"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__0
+msgid "Business Opportunities to Apply for"
+msgstr "待申请商机"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__71
+msgid "to be confirm Balance"
+msgstr "待确认尾款"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__31
+msgid "to be confirm Advance"
+msgstr "待确认预付款"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__20
+msgid "Deal"
+msgstr "成交"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__7
+msgid "In the Quotation"
+msgstr "报价中"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__8
+msgid "Audit Quotation"
+msgstr "报价待审核"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Request for Quote"
+msgstr "报价申请"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Refuse Quotation"
+msgstr "拒绝报价"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__2
+msgid "Reduse Opportunity"
+msgstr "拒绝申请商机"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__6
+msgid "Offer a Plan"
+msgstr "提供方案"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_is_team_member
+msgid "Is Team Member"
+msgstr "是否团队成员"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__5
+msgid "Requirement Determination"
+msgstr "确定需求"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__accountant_id
+msgid "Financial Audit"
+msgstr "财务审核员"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__60
+msgid "Examine Goods"
+msgstr "验货"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_res_partner__x_level
+#: model:ir.model.fields,field_description:xks_crm.field_res_users__x_level
+msgid "Level"
+msgstr "等级"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_advance_invoice
+msgid "Advance Invoice"
+msgstr "预付款单据"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_middle_invoice
+msgid "Delivery Invoice"
+msgstr "发货款单据"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_balance_invoice
+msgid "Balance Invoice"
+msgstr "尾款单据"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__buy_number
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__buy_number
+msgid "Buy Number"
+msgstr "购买数量"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__product_id
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__product_id
+msgid "Product"
+msgstr "产品"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__name
+msgid "Description"
+msgstr "说明"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__name
+msgid "Product Description"
+msgstr "产品说明"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__application_scenes
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__application_scenes
+msgid "Application Scenarios"
+msgstr "应用场景"
+
+
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Order Lines"
+msgstr "订单信息"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Project Proposals"
+msgstr "项目方案"
+
+
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Add a product"
+msgstr "添加产品"
+
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__order_line_count
+msgid "Order Lines Info"
+msgstr "订单信息不能为空"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_level
+msgid "Level"
+msgstr "等级"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_industry
+msgid "Industry"
+msgstr "行业"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_company_scale
+msgid "Company Scale"
+msgstr "公司规模"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Identify Needs"
+msgstr "确定需求"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Current Proposal"
+msgstr "现有方案"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_current_proposal
+msgid "Current Proposal Description"
+msgstr "现有方案描述"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Current Proposal Attachments"
+msgstr "现有方案附件"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Hope Proposal"
+msgstr "期望方案"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_hope_proposal
+msgid "Hope Proposal Description"
+msgstr "期望方案描述"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Hope Proposal Attachments"
+msgstr "期望方案附件"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_customer_pain_points
+msgid "Customer Pain Points"
+msgstr "客户痛点"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Competitor"
+msgstr "竞争对手"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_competitor__company_name
+msgid "Company Name"
+msgstr "客户名称"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_competitor__product_name
+msgid "Product Name"
+msgstr "产品名称"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_competitor__product_model
+msgid "Product Model"
+msgstr "产品型号"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_competitor__price
+msgid "Price"
+msgstr "价格"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_competitor__remark
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_pay_xks__remark
+msgid "Remark"
+msgstr "备注"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order_line__x_remark
+msgid "Remark"
+msgstr "备注"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__advance_percentage
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__advance_percentage
+msgid "Advance Percentage"
+msgstr "预付款比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__advance_total
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__advance_total
+msgid "Advance Amount"
+msgstr "预付款金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__advance_pay_time
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__advance_pay_time
+msgid "Advance Pay Time"
+msgstr "预付款支付时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__middle_percentage
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__middle_percentage
+msgid "Advance Percentage"
+msgstr "发货前比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__middle_total
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__middle_total
+msgid "Middle Amount"
+msgstr "发货前金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__middle_pay_time
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__middle_pay_time
+msgid "Middle Pay Time"
+msgstr "发货款支付时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__balance_percentage
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__balance_percentage
+msgid "Balance Percentage"
+msgstr "尾款比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__balance_total
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__balance_total
+msgid "Balance Amount"
+msgstr "尾款金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__balance_pay_time
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__balance_pay_time
+msgid "Balance Pay Time"
+msgstr "尾款支付时间"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Pay"
+msgstr "支付"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Contract"
+msgstr "合同"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Contract Attachments"
+msgstr "合同附件"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "PI Attachments"
+msgstr "PI附件"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order__delivery_date
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__delivery_date
+msgid "Contract Delivery Date"
+msgstr "合同交货日期"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Delivery Date"
+msgstr "交货日期"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Product"
+msgstr "产品"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Purchase Contract Attachments"
+msgstr "采购合同"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template__middle_quote
+msgid "Middle Quote"
+msgstr "中间报价"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template__reserve_quote
+msgid "Reserve Quote"
+msgstr "底价"
+
+
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_product__m_quote
+msgid "Middle Quote"
+msgstr "中间报价"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_product__r_quote
+msgid "Reserve Quote"
+msgstr "底价"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__advance_percentage
+msgid "Advance Percentage"
+msgstr "预付款比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__advance_total
+msgid "Advance Amount"
+msgstr "预付款金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__advance_pay_time
+msgid "Advance Pay Time"
+msgstr "预付款支付时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__x_advance_invoice
+msgid "Advance Invoice"
+msgstr "预付款单据"
+
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__middle_percentage
+msgid "Delivery Percentage"
+msgstr "发货款比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__middle_total
+msgid "Delivery Amount"
+msgstr "发货款金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__middle_pay_time
+msgid "Delivery Pay Time"
+msgstr "发货款支付时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__x_middle_invoice
+msgid "Delivery Invoice"
+msgstr "发货款单据"
+
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__balance_percentage
+msgid "Balance Percentage"
+msgstr "尾款比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__balance_total
+msgid "Balance Amount"
+msgstr "尾款金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__balance_pay_time
+msgid "Balance Pay Time"
+msgstr "尾款支付时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order__x_balance_invoice
+msgid "Balance Invoice"
+msgstr "尾款单据"
+
+
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__current_state
+msgid "Current State"
+msgstr "当前状态"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__purchase_order_line_id
+msgid "Purchase Order Line"
+msgstr "采购订单"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__name
+msgid "Name"
+msgstr "样品名称"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__quantity
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__product_qty
+msgid "Quantity"
+msgstr "数量"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__receive_time
+msgid "Receive Time"
+msgstr "样品接收时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__inspection_time
+msgid "Inspection Time"
+msgstr "验货时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__inspection_description
+msgid "Inspection Description"
+msgstr "验货描述"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__is_qualified
+msgid "Qualified"
+msgstr "合格"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__x_inspection_attachment_number
+msgid "Number of Inspection Attachments"
+msgstr "相关附件"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_inspection_xks__remark
+msgid "Remark"
+msgstr "备注"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.product_inspection_xks_form_view
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.product_inspection_xks_form_view
+msgid "Inspection"
+msgstr "验货"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.product_inspection_xks_form_view
+msgid "Inspection Attachments"
+msgstr "验货附件"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Produce State"
+msgstr "生产状态"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_produce_xks__pruduce_state
+msgid "State"
+msgstr "状态"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_produce_xks__update_time
+msgid "Update Time"
+msgstr "更新时间"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_produce_xks__remark
+msgid "Remark"
+msgstr "备注"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_produce_xks__x_produce_img
+msgid "Produce Img"
+msgstr "生产照片"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.product_produce_xks_form_view
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Produce Attachments"
+msgstr "生产附件"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Inspection"
+msgstr "验货"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:product_inspection_xks_form_view
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Inspection Attachments"
+msgstr "验货附件"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Delivery Payment"
+msgstr "发货款"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Batch Purchase Order Pay"
+msgstr "批量支付采购款"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Advance Pay"
+msgstr "预付款支付"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Produce State"
+msgstr "生产状态"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Balance Pay"
+msgstr "尾款支付"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_pay_xks__name
+msgid "Title"
+msgstr "标题"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_pay_xks__purchase_order_id
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__purchase_order
+msgid "Purchase Order"
+msgstr "采购订单"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_pay_xks__pay_project
+msgid "Pay Project"
+msgstr "支付类型"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_pay_xks__percentage
+msgid "Purchase Percentage"
+msgstr "支付比例"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_pay_xks__purchase_order_pay_invoice
+msgid "Purchase Order Pay Invoice"
+msgstr "采购订单支付单据"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_pay_xks_form_view
+msgid "Purchase Order Line"
+msgstr "采购项"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__purchase_order_line_id
+msgid "Purchase Order Line"
+msgstr "采购订单项"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__price_unit
+msgid "Unit Price"
+msgstr "单价"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__payment_qty
+msgid "Current Pay Quantity"
+msgstr "当前支付数量"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__price_pay
+msgid "Current Pay Price"
+msgstr "当前支付金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__unpaid_qty
+msgid "Unpaid Quantity"
+msgstr "未支付数量"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line_pay_xks__price_unpaid
+msgid "Unpaid Price"
+msgstr "未支付金额"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__delivery_qty
+msgid "Delivery Unpaid Quantity"
+msgstr "发货未支付数量"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__delivery_price
+msgid "Delivery Unpaid Price"
+msgstr "发货未支付金额"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Delivery Payment Receive"
+msgstr "收到发货款"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Leads Plan"
+msgstr "线索方案"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_plan__product_name
+msgid "Product Name"
+msgstr "产品名称"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_plan__product_model
+msgid "Product Model"
+msgstr "产品型号"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_plan__product_qty
+msgid "Buy Quantity"
+msgstr "购买数量"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_plan__price_unit
+msgid "Unit Price"
+msgstr "单价"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_plan__currency_id
+msgid "Currency"
+msgstr "币种"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_plan__remark
+msgid "Remark"
+msgstr "备注"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__price_unit
+#: model:ir.model.fields,field_description:xks_crm.field_product_template_id__list_price
+msgid "Price Unit"
+msgstr "单价"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_product__external_model
+msgid "External Model"
+msgstr "外部型号"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template_parameter_xks__parameter_name
+msgid "Parameter Name"
+msgstr "参数名称"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template_parameter_xks__parameter_value
+msgid "Parameter Value"
+msgstr "值"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template_parameter_xks__parameter_unit
+msgid "Parameter Unit"
+msgstr "单位"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template_parameter_xks__remark
+msgid "Remark"
+msgstr "备注"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_product_template_parameter_xks__sequence
+msgid "Sort"
+msgstr "排序"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.product_template_common_inherit_xks_view_from
+msgid "Product Parameter"
+msgstr "产品参数"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.product_template_common_inherit_xks_view_from
+msgid "Internal Notes"
+msgstr "内部备注"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__product_model
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order_line__product_model
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__product_model
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__product_external_model
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order_line__product_external_model
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__product_external_model
+msgid "Product Model"
+msgstr "产品型号"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead_order_line__optional_configure
+#: model:ir.model.fields,field_description:xks_crm.field_sale_order_line__optional_configure
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__optional_configure
+msgid "Optional Configure"
+msgstr "选配"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_purchase_order_line__product_template_id
+msgid "product.template"
+msgstr "产品"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Add a product"
+msgstr "添加产品"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Add a section"
+msgstr "添加节"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Add a note"
+msgstr "新建便签"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+#: model_terms:ir.ui.view,arch_db:xks_crm.purchase_order_inherit_xks_form
+msgid "Product"
+msgstr "产品"
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_team_member__monthly_goal
+msgid "Monthly Goal"
+msgstr "月目标"

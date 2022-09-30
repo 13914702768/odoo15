@@ -1,0 +1,1314 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+    <!-- 修改线索form表单 -->
+    <record id="crm_lead_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">旭科晟商机表单视图</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+<!--            <link rel="stylesheet" type="text/css" href="/xks__crm/static/src/css/leads.css"/>-->
+            <!-- 新增字段 -->
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="x_lead_status" attrs="{'invisible': 1}"/>
+				<field name="order_line_count" attrs="{'invisible': 1}"/>
+                <field name="x_plan_count" attrs="{'invisible': 1, 'required': 1}"/>
+                <field name="x_competitor_count" attrs="{'invisible': 1, 'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4', '5', '6')) ]}"/>
+                <field name="accountant_id" attrs="{'invisible': [('x_lead_status', 'not in', ('30', '31', '50', '60', '70', '71', '80')) ]}"/>
+            </xpath>
+
+            <!-- 隐藏比例后的括号 -->
+            <xpath expr="//div[@id='probability']/span" position="attributes">
+                <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            
+            <!-- #######################################线索下字段控制####################start################# -->
+            <!-- 线索下客户名称必填 -->
+            <xpath expr="//group[@name='lead_partner']/field[@name='partner_name']" position="attributes">
+                 <attribute  name="attrs">{'required': [('x_lead_status', '=', '0')] }</attribute>
+            </xpath>
+             <!-- 线索下网站必填 -->
+            <xpath expr="//group[@name='lead_partner']/field[@name='website']" position="attributes">
+                 <attribute  name="attrs">{'required': [('x_lead_status', '=', '0')] }</attribute>
+            </xpath>
+            <!-- 线索下邮件抄送隐藏 -->
+            <xpath expr="//group[@name='lead_info']/field[@name='email_cc']" position="attributes">
+                 <attribute  name="attrs">{'invisible': [('x_lead_status', '=', '0')] }</attribute>
+            </xpath>
+             <!-- 线索下语言隐藏 -->
+            <xpath expr="//group[@name='lead_partner']/field[@name='lang_id']" position="attributes">
+                 <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <!-- 线索下手机号必填 -->
+            <xpath expr="//group[@name='lead_info']/div/field[@name='mobile']" position="attributes">
+                 <attribute  name="attrs">{'required': [('type', '=', 'lead')] }</attribute>
+            </xpath>
+            <!-- 线索下邮箱必填 -->
+            <xpath expr="//group[@name='lead_info']/div/field[@name='email_from']" position="attributes">
+                 <attribute  name="attrs">{'required': [('type', '=', 'lead')] }</attribute>
+            </xpath>
+            <!-- 线索下优先级标签隐藏 -->
+            <xpath expr="//group[@name='lead_priority']" position="attributes">
+                 <attribute  name="attrs">{'invisible': ['|', ('type', '=', 'opportunity'),('type', '=', 'lead')]}</attribute>
+            </xpath>
+            <!-- #######################################线索下字段控制####################end################# -->
+
+            <!-- #######################################线索和商机共有字段控制####################start################# -->
+            <!-- 线索和商机下销售隐藏 -->
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                 <attribute  name="attrs">{'invisible': 1 }</attribute>
+            </xpath>
+            <!-- 线索和商机下销售团队隐藏 -->
+            <xpath expr="//field[@name='team_id']" position="attributes">
+                 <attribute  name="attrs">{'invisible': 1 }</attribute>
+            </xpath>
+            <!-- #######################################线索和商机共有字段控制####################end################# -->
+
+            <!-- #######################################商机下控制####################start################# -->
+            <!-- 商机下客户名称必填 -->
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_id']" position="attributes">
+                 <attribute  name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )]}</attribute>
+            </xpath>
+            <!-- 商机下邮箱必填 -->
+            <xpath expr="//group[@name='opportunity_partner']/div/field[@name='email_from']" position="attributes">
+                 <attribute  name="attrs">{'required': ['|', ('phone', '=', False), ('phone', '=', '')]}</attribute>
+            </xpath>
+            <!-- 商机下邮箱必填 -->
+            <xpath expr="//group[@name='opportunity_partner']/div/field[@name='phone']" position="attributes">
+                 <attribute  name="attrs">{'required': ['|', ('email_from', '=', False), ('email_from', '=', '')]}</attribute>
+            </xpath>
+            <!-- 商机下预期结束时间隐藏 -->
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                 <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+
+
+            <!-- 商机下额外信息中公司名称必填 -->
+            <xpath expr="//page[@name='lead']/group/group[1]/field[@name='partner_name']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <!-- 商机下额外信息中地址必填 -->
+            <xpath expr="//page[@name='lead']/group/group[1]/div/field[@name='street']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group[1]/div/field[@name='city']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group[1]/div/field[@name='country_id']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group[1]/div/field[@name='zip']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <xpath expr="//page[@name='lead']/group/group[1]/div/field[@name='state_id']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <!-- 商机下额外信息中网站必填 -->
+            <xpath expr="//page[@name='lead']/group/group[1]/field[@name='website']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <!-- 商机下额外信息中手机号必填 -->
+            <xpath expr="//page[@name='lead']/group/group[2]/div/field[@name='mobile']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <!-- 商机下额外信息中手机号必填 -->
+            <xpath expr="//page[@name='lead']/group/group[2]/div/field[@name='contact_name']" position="attributes">
+                <attribute name="attrs">{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3') )] }</attribute>
+            </xpath>
+            <!-- 商机下额外信息中语言隐藏 -->
+            <xpath expr="//page[@name='lead']/group/group[1]/field[@name='lang_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4') )] }</attribute>
+            </xpath>
+
+            <!-- 新增发货款page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                <page string="Delivery Payment"
+                      attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20', '30', '31', '50', '60') )]}">
+                    <field name="purchase_items_delivery_payment" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                        <tree string="Purchase Order Items" editable="bottom" >
+                            <field name="name"/>
+                            <field name="product_qty"/>
+                            <field name="delivery_qty"/>
+<!--                            <field name="delivery_price"/>-->
+                            <field name="customer_delivery_price"/>
+                            <field name="current_state"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="product_qty"/>
+                                    </group>
+                                    <group>
+                                        <field name="current_state"/>
+                                    </group>
+                                </group>
+                                <notebook>
+                                    <page string="Produce State" attrs="{'invisible': [('current_state', 'in', ('1', '2'))]}">
+                                        <field name="produce_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                                            <tree default_order="update_time desc"  edit="false" create="false">
+                                                <field name="pruduce_state"/>
+                                                <field name="update_time"/>
+                                                <field name="remark"/>
+                                            </tree>
+                                            <form>
+                                                <sheet>
+                                                    <group>
+                                                        <group>
+                                                            <field name="pruduce_state"/>
+                                                            <field name="update_time"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="remark" widget='html'/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <group>
+                                                                <field name="x_produce_img"/>
+                                                            </group>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </page>
+                                    <page string="Inspection" attrs="{'invisible': [('current_state', 'in', ('1', '2', '3'))]}">
+                                        <field name="inspection_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                                            <tree default_order="inspection_time desc"  edit="false" create="false">
+                                                <field name="is_qualified"/>
+                                                <field name="name"/>
+                                                <field name="quantity"/>
+                                                <field name="receive_time"/>
+                                                <field name="inspection_time"/>
+                                                <field name="inspection_description"/>
+                                                <field name="remark"/>
+                                            </tree>
+                                            <form>
+                                                <sheet>
+                                                    <group>
+                                                        <group>
+                                                            <field name="name"/>
+                                                            <field name="quantity"/>
+                                                            <field name="receive_time"/>
+                                                            <field name="remark" widget='html'/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="inspection_time"/>
+                                                            <field name="inspection_description"/>
+                                                            <field name="is_qualified"/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <group>
+                                                                <h5>Inspection Attachments</h5>
+                                                                <div name="button_box">
+                                                                    <button name="action_get_inspection_attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                                                        <field name="x_inspection_attachment_number" string="Upload Product Inspection Attachments"/>
+                                                                    </button>
+                                                                </div>
+                                                            </group>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+            <!-- 新增验货Page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                <page string="Inspection"
+                      attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20', '30', '31', '50') )]}">
+                    <field name="purchase_items_inspection" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                        <tree string="Purchase Order Items" editable="bottom" >
+                            <field name="name"/>
+                            <field name="product_qty"/>
+                            <field name="current_state"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="product_qty"/>
+                                    </group>
+                                    <group>
+                                        <field name="current_state"/>
+                                    </group>
+                                </group>
+                                <notebook>
+                                    <page string="Produce State" attrs="{'invisible': [('current_state', 'in', ('1', '2'))]}">
+                                        <field name="produce_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                                            <tree default_order="update_time desc"  edit="false" create="false">
+                                                <field name="pruduce_state"/>
+                                                <field name="update_time"/>
+                                                <field name="remark"/>
+                                            </tree>
+                                            <form>
+                                                <sheet>
+                                                    <group>
+                                                        <group>
+                                                            <field name="pruduce_state"/>
+                                                            <field name="update_time"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="remark" widget='html'/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <group>
+                                                                <field name="x_produce_img"/>
+                                                            </group>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </page>
+                                    <page string="Inspection" attrs="{'invisible': [('current_state', 'in', ('1', '2', '3'))]}">
+                                        <field name="inspection_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                                            <tree default_order="inspection_time desc"  edit="false" create="false">
+                                                <field name="is_qualified"/>
+                                                <field name="name"/>
+                                                <field name="quantity"/>
+                                                <field name="receive_time"/>
+                                                <field name="inspection_time"/>
+                                                <field name="inspection_description"/>
+                                                <field name="remark"/>
+                                            </tree>
+                                            <form>
+                                                <sheet>
+                                                    <group>
+                                                        <group>
+                                                            <field name="name"/>
+                                                            <field name="quantity"/>
+                                                            <field name="receive_time"/>
+                                                            <field name="remark" widget='html'/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="inspection_time"/>
+                                                            <field name="inspection_description"/>
+                                                            <field name="is_qualified"/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <group>
+                                                                <h5>Inspection Attachments</h5>
+                                                                <div name="button_box">
+                                                                    <button name="action_get_inspection_attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                                                        <field name="x_inspection_attachment_number" string="Upload Product Inspection Attachments"/>
+                                                                    </button>
+                                                                </div>
+                                                            </group>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+            <!-- 新增采购订单Page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                <page string="Purchase Order"
+                      attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20', '30', '31') )]}">
+                    <field name="purchase_items" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}" >
+                        <tree string="Purchase Order Items" editable="bottom" >
+                            <field name="name"/>
+                            <field name="product_qty"/>
+                            <field name="current_state"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="product_qty"/>
+                                    </group>
+                                    <group>
+                                        <field name="current_state"/>
+                                    </group>
+                                </group>
+                                <notebook>
+                                    <page string="Produce State" attrs="{'invisible': [('current_state', 'in', ('1', '2'))]}">
+                                        <field name="produce_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                                            <tree default_order="update_time desc"  edit="false" create="false">
+                                                <field name="pruduce_state"/>
+                                                <field name="update_time"/>
+                                                <field name="remark"/>
+                                            </tree>
+                                            <form>
+                                                <sheet>
+                                                    <group>
+                                                        <group col="3">
+                                                            <field name="pruduce_state"/>
+                                                            <field name="update_time"/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="remark" widget='html'/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <group>
+                                                                <field name="x_produce_img"/>
+                                                            </group>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </page>
+                                    <page string="Inspection" attrs="{'invisible': [('current_state', 'in', ('1', '2', '3'))]}">
+                                        <field name="inspection_ids" widget="section_and_note_one2many" mode="tree" attrs="{'readonly': 1}">
+                                            <tree default_order="inspection_time desc"  edit="false" create="false">
+                                                <field name="is_qualified"/>
+                                                <field name="name"/>
+                                                <field name="quantity"/>
+                                                <field name="receive_time"/>
+                                                <field name="inspection_time"/>
+                                                <field name="inspection_description"/>
+                                                <field name="remark"/>
+                                            </tree>
+                                            <form>
+                                                <sheet>
+                                                    <group>
+                                                        <group>
+                                                            <field name="name"/>
+                                                            <field name="quantity"/>
+                                                            <field name="receive_time"/>
+                                                            <field name="remark" widget='html'/>
+                                                        </group>
+                                                        <group>
+                                                            <field name="inspection_time"/>
+                                                            <field name="inspection_description"/>
+                                                            <field name="is_qualified"/>
+                                                        </group>
+                                                    </group>
+                                                    <group>
+                                                        <group>
+                                                            <group>
+                                                                <h5>Inspection Attachments</h5>
+                                                                <div name="button_box">
+                                                                    <button name="action_get_inspection_attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                                                        <field name="x_inspection_attachment_number" string="Upload Product Inspection Attachments"/>
+                                                                    </button>
+                                                                </div>
+                                                            </group>
+                                                        </group>
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+            <!-- 新增合同Page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                 <page string="Contract" attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15') )]}" >
+                    <field name="x_current_sales_order_line" widget="section_and_note_one2many" mode="tree"
+                           attrs="{'readonly': 1}" context="{'default_show_type': '1' }">
+                        <tree string="Sales Order Lines" editable="bottom" >
+                            <field name="sequence" widget="handle" />
+                            <field name="display_type" invisible="1"/>
+                            <field name="product_uom_category_id" invisible="1"/>
+                            <field name="product_updatable" invisible="1"/>
+                            <field name="product_id" attrs="{'readonly': [('product_updatable', '=', False)], 'required': [('display_type', '=', False)],}"
+                                        force_save="1" widget="product_configurator" />
+                            <field name="product_template_id" string="Product" invisible="1"
+                                      attrs="{'readonly': [('product_updatable', '=', False)], 'required': [('display_type', '=', False)], }"
+                                      widget="product_configurator"/>
+                            <field name="name" invisible="1" widget="section_and_note_text" optional="show"/>
+                            <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags"
+                                        options="{'color_field': 'color'}" />
+                            <field name="product_uom_qty" decoration-info="(not display_type and invoice_status == 'to invoice')"
+                                   decoration-bf="(not display_type and invoice_status == 'to invoice')"/>
+                            <field name="qty_delivered_manual" invisible="1"/>
+                            <field name="qty_delivered_method" invisible="1"/>
+                            <field name="qty_to_invoice" invisible="1"/>
+                            <field name="product_uom_readonly" invisible="1"/>
+                            <field name="product_uom" force_save="1" string="UoM"
+                                   attrs="{'readonly': [('product_uom_readonly', '=', True)], 'required': [('display_type', '=', False)], }"
+                                   groups="uom.group_uom" options='{"no_open": True}' optional="show"/>
+                            <field name="customer_lead" optional="hide" attrs="{'readonly': 1}"/>
+                            <field name="product_packaging_qty" attrs="{'invisible': ['|', ('product_id', '=', False), ('product_packaging_id', '=', False)]}" groups="product.group_stock_packaging" optional="show"/>
+                            <field name="product_packaging_id" attrs="{'invisible': [('product_id', '=', False)]}" context="{'default_product_id': product_id, 'tree_view_ref':'product.product_packaging_tree_view', 'form_view_ref':'product.product_packaging_form_view'}" groups="product.group_stock_packaging" optional="show"/>
+                            <field name="price_unit" />
+                            <field name="tax_id" widget="many2many_tags" invisible="1" options="{'no_create': True}" context="{'active_test': True}" optional="show" />
+                            <field name="discount" string="Disc.%" groups="product.group_discount_per_so_line" optional="show" widget="product_discount"/>
+                            <field name="price_subtotal" widget="monetary" groups="account.group_show_line_subtotals_tax_excluded"/>
+                            <field name="price_total" widget="monetary" groups="account.group_show_line_subtotals_tax_included"/>
+                            <field name="x_remark"/>
+                            <field name="state" invisible="1"/>
+                            <field name="invoice_status" invisible="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="price_tax" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                        </tree>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <group>
+                                         <field name="product_id" force_save="1" widget="product_configurator" />
+                                        <field name="product_uom_qty"/>
+                                    </group>
+                                    <group>
+                                        <field name="price_unit" />
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                    <group name="note_group" col="6" class="mt-2 mt-md-0">
+                        <group colspan="4">
+                            <field name="note" class="oe-bordered-editor" nolabel="1" placeholder="Terms and conditions..."/>
+                        </group>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            <field name="tax_totals_json" widget="account-tax-totals-field" nolabel="1" colspan="2"/>
+                        </group>
+                        <div class="oe_clear"/>
+                    </group>
+                    <group string="Pay" col="3">
+                        <group>
+                            <field name="advance_percentage"/>
+                            <field name="advance_pay_time"
+                                   attrs="{
+                                   'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20') )]
+                                   ,'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20') )]
+                                   }"/>
+                            <field name="advance_total" />
+                            <field name="x_advance_invoice" placeholder="Add a Advance Invoice..."
+                                    attrs="{
+                                   'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20') )]
+                                   ,'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15', '20') )]
+                                   }"/>
+                        </group>
+                        <group>
+                            <field name="middle_percentage" />
+                            <field name="middle_pay_time"
+                                   attrs="{
+                                   'invisible': [('x_lead_status', 'not in', ('70', '71', '80', '90', '91') )]
+                                   ,'required': [('x_lead_status', 'in', ('70', '71', '80', '90', '91') )]
+                                   }"/>
+                            <field name="middle_total" />
+                            <field name="x_middle_invoice" placeholder="Add a Delivery Invoice..."
+                                   attrs="{
+                                   'invisible': [('x_lead_status', 'not in', ('70', '71', '80', '90', '91') )]
+                                   ,'required': [('x_lead_status', 'in', ('70', '71', '80', '90', '91') )]
+                                   }"/>
+                        </group>
+                        <group>
+                            <field name="balance_percentage" />
+                            <field name="balance_pay_time"
+                                   attrs="{
+                                   'invisible': [('x_lead_status', 'not in', ('70', '71', '80', '90', '91') )]
+                                   ,'required': [('x_lead_status', 'in', ('90', '91') )]
+                                   }"/>
+                            <field name="balance_total" />
+                            <field name="x_balance_invoice" placeholder="Add a Balance Invoice..."
+                                   attrs="{
+                                   'invisible': [('x_lead_status', 'not in', ('70', '71', '80', '90', '91') )]
+                                   ,'required': [('x_lead_status', 'in', ('90', '91') )]
+                                   }"/>
+                        </group>
+
+                    </group>
+                    <group string="Contract">
+                        <group>
+                            <h5>Contract Attachments</h5>
+                            <div name="button_box">
+                                <button name="action_get_contract__attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                    <field name="x_contract_attachment_number" string="Upload Contract Attachments"/>
+                                </button>
+                            </div>
+                        </group>
+                        <group>
+                            <h5>PI Attachments</h5>
+                            <div name="button_box">
+                                <button name="action_get_pi__attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                    <field name="x_pi_attachment_number" string="Upload PI Attachments"/>
+                                </button>
+                            </div>
+                        </group>
+                    </group>
+                    <group string="Delivery Date">
+                        <group>
+                            <field name="delivery_date"  attrs="{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '15') )] }"/>
+                        </group>
+                    </group>
+                 </page>
+            </xpath>
+            <!-- 新增竞争对手page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                 <page string="Competitor" attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5', '6') )]}" >
+                    <field name="competitor" widget="section_and_note_one2many" mode="tree">
+                        <tree string="Leads Competitor" editable="bottom">
+                                 <field name="sequence" widget="handle" />
+                                 <field name="company_name"/>
+                                 <field name="product_name"/>
+                                 <field name="product_model"/>
+                                 <field name="price"/>
+                                 <field name="remark"/>
+                             </tree>
+                    </field>
+                 </page>
+            </xpath>
+            <!-- 新增项目方案Page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                 <page string="Project Proposals" name="order_lines"
+                       attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4', '5') )]}">
+                     <field name="order_line" widget="section_and_note_one2many" mode="tree"
+                            context="{'default_show_type': '1' }" >
+                             <tree string="Leads Order Lines" >
+                                 <control>
+                                     <create name="add_product_control" string="Add a product"/>
+                                 </control>
+
+                                 <field name="sequence" widget="handle" />
+                                 <field name="product_id" force_save="1"
+                                        invisible="1"
+                                        context="{
+                                            'partner_id': parent.partner_id,
+                                            'company_id': parent.company_id,
+                                            'default_description_sale': name
+                                        }"
+                                        domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                        widget="product_configurator"
+                                 />
+                                 <field name="product_template_id"
+                                      string="Product"
+                                      context="{
+                                          'partner_id': parent.partner_id,
+                                          'company_id': parent.company_id,
+                                          'default_description_sale': name
+                                      }"
+                                      domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                      widget="product_configurator"/>
+                                 <field name="product_model"/>
+                                 <field name="optional_configure"/>
+                                 <field name="name" invisible="1"/>
+                                 <field name="buy_number" />
+                                 <field name="price_unit" />
+                                 <field name="application_scenes" widget="section_and_note_text" optional="show"/>
+                                 <field name="company_id" invisible="1"/>
+                             </tree>
+                             <form>
+                                 <sheet>
+                                     <group>
+                                         <group>
+                                            <field name="sequence" invisible="1"/>
+                                            <field name="product_id" force_save="1"
+                                                context="{
+                                                    'partner_id': parent.partner_id,
+                                                    'company_id': parent.company_id,
+                                                    'default_description_sale': name
+                                                }"
+                                                domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                                                widget="product_configurator" />
+                                            <field name="product_template_id" string="Product" invisible="1" widget="product_configurator"
+                                                context="{
+                                                    'partner_id': parent.partner_id,
+                                                    'company_id': parent.company_id,
+                                                    'default_description_sale': name
+                                                }"
+                                                domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]" />
+                                            <field name="application_scenes" widget="section_and_note_text"/>
+                                            <field name="buy_number" />
+                                            <field name="price_unit" />
+                                            <field name="company_id" invisible="1"/>
+                                         </group>
+                                         <group>
+                                            <field name="name" placeholder="Add a Product Drawing..."/>
+                                         </group>
+                                     </group>
+                                 </sheet>
+                             </form>
+                     </field>
+                 </page>
+            </xpath>
+            <!-- 新增确定需求page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                 <page string="Identify Needs" attrs="{'invisible': [('x_lead_status', 'in', ('0', '1', '2', '3', '4') )]}" >
+                     <group string="Current Proposal">
+                         <group>
+                            <field name="x_current_proposal" placeholder="Add a Current Proposal Description..."
+                                attrs="{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4') )]}"/>
+                         </group>
+                         <group>
+                            <field name="x_customer_pain_points" placeholder="Add Customer Pain Points..."
+                                attrs="{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4') )]}"/>
+                         </group>
+                     </group>
+                     <group string="Hope Proposal">
+                         <group>
+                            <field name="x_hope_proposal" placeholder="Add a Hope Proposal Description..."
+                                attrs="{'required': [('x_lead_status', 'not in', ('0', '1', '2', '3', '4') )]}"/>
+                         </group>
+                     </group>
+                 </page>
+            </xpath>
+            <!-- 新增线索方案 -->
+            <xpath expr="//page[@name='internal_notes']" position="before">
+                 <page string="Leads Plan">
+                    <field name="leads_plan" widget="section_and_note_one2many" mode="tree">
+                        <tree string="Leads Plan" editable="bottom">
+                                 <field name="product_name"/>
+                                 <field name="product_model"/>
+                                 <field name="product_qty"/>
+                                 <field name="price_unit"/>
+                                 <field name="currency_id" readonly="1"/>
+                                 <field name="remark"/>
+                        </tree>
+                    </field>
+                 </page>
+            </xpath>
+            <!-- 商机下额外信息中新增客户等级、行业、公司规模 -->
+            <xpath expr="//page[@name='lead']/group/group[1]/field[@name='lang_id']" position="after">
+                <field name="x_level" />
+                <field name="x_industry" />
+                <field name="x_company_scale" />
+            </xpath>
+            <!-- 商机下额外信息中市场营销下活动隐藏 -->
+            <xpath expr="//page[@name='lead']/group/group[3]/field[@name='campaign_id']" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <!-- 商机下额外信息中市场营销下媒介隐藏 -->
+            <xpath expr="//page[@name='lead']/group/group[3]/field[@name='medium_id']" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <!-- 商机下额外信息中杂项隐藏 -->
+            <xpath expr="//page[@name='lead']/group/group[4]" position="attributes">
+                <attribute name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+
+            <!-- #######################################商机下控制####################end################# -->
+
+            <!-- 新增操作按钮 -->
+            <xpath expr="//button[@name='action_set_lost']" position="after">
+                <!-- 新增线索转商机同意按钮 -->
+                <button name="agree_to_lead_application_xks"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('x_lead_status', '!=', '1')]}"
+                        string="Agree Lead Application"
+                        groups="sales_team.group_sale_manager"/>
+                <!-- 新增线索转商机同意按钮 -->
+                <button name="reject_lead_application_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Refuse Leads"
+                        attrs="{'invisible': [('x_lead_status', '!=', '1')]}"
+                        groups="sales_team.group_sale_manager"/>
+                <!-- 新增跳转确定需求页面按钮 -->
+                <button name="go_to_identify_needs_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go to Requirement Determination Stage"
+                        attrs="{'invisible': ['|', ('x_lead_status', '!=', '4'), ('stage_id', '!=', 1)] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增跳转提供方案页面按钮 -->
+                <button name="go_to_provide_plan_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go to Offer a Plan Stage"
+                        attrs="{'invisible': [('stage_id', '!=', 2)] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增跳转提供报价页面按钮 -->
+                <button name="go_to_provide_pricing_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go to Quote Stage"
+                        attrs="{'invisible': [('stage_id', '!=', 3)] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增跳转商务谈判页面按钮 -->
+                <button name="go_to_negotiation_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go to Business Negotiation Stage"
+                        attrs="{'invisible': ['|', '|', ('stage_id', '!=', 4)
+                                             , '&amp;', ('stage_id', '=', 4), ('quotation_count', '=', 0)
+                                             , '&amp;', '&amp;', ('stage_id', '=', 4), ('quotation_count', '!=', 0), ('x_lead_status', 'not in', ('9'))
+                                             ]}"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增跳转成交页面按钮 -->
+                <button name="go_to_deal_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go to Deal"
+                        attrs="{'invisible': [('stage_id', '!=', 5)] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增跳转预付款页面按钮 -->
+                <button name="go_to_prepayment_review_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go to Advance Stage"
+                        attrs="{'invisible': [('stage_id', '!=', 6)] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增提交预付款审核按钮 -->
+                <button name="prepayment_review_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Request for Advance"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 7), '&amp;', ('stage_id', '=', 7),('x_lead_status', '!=', '30')] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增已收预付款按钮 -->
+                <button name="prepayment_review_audit_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Remited Advance"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 7), '&amp;', ('stage_id', '=', 7), ('x_lead_status', '!=', '31')] }"
+                        groups="account.group_account_manager"/>
+                <!-- 新增提交发货款审核按钮 -->
+                <button name="submit_delivery_payment_review_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Submit Delivery Payment Review"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 10), ('x_lead_status', '!=', '70')] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增发货款审核按钮 -->
+                <button name="delivery_payment_audit_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Delivery Payment Receive"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 10), ('x_lead_status', '!=', '71')] }"
+                        groups="account.group_account_manager"/>
+                <!-- 新增进入尾款阶段按钮 -->
+                <button name="go_to_balance_stage"
+                        type="object"
+                        class="oe_highlight"
+                        string="Go To Balance Stage"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 11), '&amp;', ('stage_id', '=', 11),('x_lead_status', '!=', '80')] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增提交尾款审核按钮 -->
+                <button name="submit_banace_payment_review_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Request for Balance"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 12), '&amp;', ('stage_id', '=', 12),('x_lead_status', '!=', '90')] }"
+                        groups="sales_team.group_sale_salesman,sales_team.group_sale_salesman_all_leads,sales_team.group_sale_manager"
+                />
+                <!-- 新增尾款审核按钮 -->
+                <button name="balance_prepayment_audit_xks"
+                        type="object"
+                        class="oe_highlight"
+                        string="Remited Balance"
+                        attrs="{'invisible': ['|', ('stage_id', '!=', 12), '&amp;', ('stage_id', '=', 12), ('x_lead_status', '!=', '91')] }"
+                        groups="account.group_account_manager"/>
+            </xpath>
+            <!-- 禁止状态栏可点击操作  加上options="{'clickable': 'false', 'fold_field': 'fold'}"可以点击 -->
+            <xpath expr="//field[@name='stage_id']" position="replace">
+                    <field name="stage_id" widget="statusbar"
+                            domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                            attrs="{'invisible': ['|', ('active', '=', False), ('type', '=', 'lead')]}"/>
+            </xpath>
+            <!-- 线索菜单中转换为商机按钮当不是待申请（0）或拒绝（1）状态时候不可见 -->
+            <xpath expr="//button[@name='178']" position="attributes">
+                <attribute  name="attrs">{'invisible': ['|', '|', ('type', '=', 'opportunity'), ('active', '=', False),
+                                               ('x_lead_status','not in', ('0','2')) ]}</attribute>
+            </xpath>
+            <!-- 赢得按钮显示隐藏控制 -->
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+                <attribute  name="attrs">{'invisible': ['|','|','|', ('active','=',False), ('probability', '=', 100),
+                    ('type', '=', 'lead'), ('x_lead_status', '!=', '14')]}</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="crm_lead_oppor_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">旭科晟商机表单oppor视图</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor" />
+        <field name="arch" type="xml">
+            <!-- 新的报价单按钮显示隐藏控制 -->
+            <xpath expr="//button[@name='action_sale_quotations_new']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', '|', '|',('type', '=', 'lead')
+                    , '&amp;', ('probability', '=', 0), ('active', '=', False)
+                    , '&amp;',('x_lead_status', 'in', ('7') ), ('quotation_count', '!=', 0)
+                    , ('x_lead_status', 'not in', ('7', '15') )
+                    ]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- 修改线索列表 -->
+    <record id="crm_lead_inherit_xks_tree_from" model="ir.ui.view">
+        <field name="name">旭科晟线索列表视图</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="x_lead_status"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- 修改线索转商机改状态 -->
+    <record id="view_crm_lead2opportunity_partner_inherit_xks" model="ir.ui.view">
+        <field name="name">旭科晟线索转商机</field>
+        <field name="model">crm.lead2opportunity.partner</field>
+        <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="replace">
+                <!-- 转换商机中销售员只能是自己 -->
+                <field name="user_id" domain="[('share', '=', False),('id','=',uid)]"/>
+            </xpath>
+            <xpath expr="//button[@name='action_apply']" position="attributes">
+                <attribute  name="name">action_apply_xks</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- 修改我的渠道中看板视图，过滤审核未审核和未通过的 -->
+    <record model="ir.actions.act_window" id="crm.crm_lead_action_pipeline">
+         <field name="domain">[('type','=','opportunity'), ('x_lead_status', 'not in', ('1', '2'))]</field>
+    </record>
+    <!-- 修改我的渠道中看板视图，为禁止拖拽 -->
+<!--    <record id="crm_lead_view_kanban_xks" model="ir.ui.view">-->
+<!--            <field name="name">crm.lead.view.kanban.xks</field>-->
+<!--            <field name="model">crm.lead</field>-->
+<!--            <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>-->
+<!--            <field name="mode">primary</field>-->
+<!--            <field name="priority">32</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//kanban" position="attributes">-->
+<!--                    <attribute name="records_draggable">0</attribute>-->
+<!--                    <attribute name="create">0</attribute>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--    </record>-->
+
+
+    <!-- 线索申请审核tree视图 -->
+    <record id="crm_leads_review_tree_view_xks" model="ir.ui.view">
+            <field name="name">crm.lead.review.xks.tree.lead</field>
+            <field name="model">crm.lead</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <tree string="Leads" sample="1" multi_edit="1">
+                    <field name="date_deadline" invisible="1"/>
+                    <field name="create_date" optional="hide"/>
+                    <field name="name" string="Lead" readonly="1"/>
+                    <field name="contact_name" optional="hide"/>
+                    <field name="partner_name" optional="hide"/>
+                    <field name="email_from" optional="show"/>
+                    <field name="phone" optional="show" class="o_force_ltr"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                    <field name="city" optional="show"/>
+                    <field name="state_id" optional="hide"/>
+                    <field name="country_id" optional="show" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="partner_id" invisible="1"/>
+                    <!-- Explicit domain due to multi edit -> real company domain would be complicated -->
+                    <field name="user_id" optional="show"  widget="many2one_avatar_user"
+                        domain="[('share', '=', False)]"/>
+                    <field name="team_id" optional="show"/>
+                    <field name="active" invisible="1"/>
+                    <field name="campaign_id" optional="hide"/>
+                    <field name="referred" invisible="1"/>
+                    <field name="medium_id" optional="hide"/>
+                    <field name="source_id" optional="hide"/>
+                    <field name="probability" string="Probability (%)" optional="hide"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="priority" optional="hide"/>
+                </tree>
+            </field>
+    </record>
+    <!-- 线索转商机申请审核窗口 -->
+    <record model="ir.actions.act_window" id="crm_xks_all_review_leads">
+            <field name="name">Leads Xks</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree,kanban,graph,pivot,calendar,form,activity</field>
+            <field name="domain">[('type','=','opportunity'), ('x_lead_status','=','1')]</field>
+    </record>
+    <!-- 线索转商机申请审核视图窗口配置 -->
+    <record id="crm_xks_review_leads_tree" model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="sequence" eval="2"/>
+        <field name="act_window_id" ref="crm_xks_all_review_leads"/>
+        <field name="view_id" ref="crm_leads_review_tree_view_xks" />
+    </record>
+
+    <!-- 预付款审核窗口 -->
+    <record model="ir.actions.act_window" id="crm_xks_advance_confirmed">
+            <field name="name">Advance Confirmed Xks</field>
+            <field name="res_model">crm.lead</field>
+            <field name="view_mode">tree,kanban,graph,pivot,calendar,form,activity</field>
+            <field name="domain">[('type','=','opportunity'), ('x_lead_status','=','3')]</field>
+    </record>
+    <!-- 预付款审核列表打开视图配置 -->
+    <record id="crm_xks_review_leads_tree" model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="sequence" eval="2"/>
+        <field name="act_window_id" ref="crm_xks_advance_confirmed"/>
+        <field name="view_id" ref="crm_leads_review_tree_view_xks" />
+    </record>
+
+    <record id="crm_lead_xks_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.xks.form</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <form class="o_lead_opportunity_form" js_class="crm_form">
+<!--                <header>-->
+<!--                    <button name="action_set_won_rainbowman" string="Won"-->
+<!--                            type="object" class="oe_highlight" data-hotkey="w" title="Mark as won"-->
+<!--                            attrs="{'invisible': ['|','|', ('active','=',False), ('probability', '=', 100), ('type', '=', 'lead')]}"/>-->
+<!--                    <button name="%(crm.crm_lead_lost_action)d" string="Lost" data-hotkey="l" title="Mark as lost"-->
+<!--                            type="action" context="{'default_lead_id': active_id}" attrs="{'invisible': ['|', ('type', '=', 'lead'),('active', '=', False),('probability', '&lt;', 100)]}"/>-->
+<!--                    <button name="%(crm.action_crm_lead2opportunity_partner)d" string="Convert to Opportunity" type="action" help="Convert to Opportunity"-->
+<!--                            class="oe_highlight" attrs="{'invisible': ['|', ('type', '=', 'opportunity'), ('active', '=', False)]}" data-hotkey="v"/>-->
+<!--                    <button name="toggle_active" string="Restore" type="object" data-hotkey="z"-->
+<!--                            attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}"/>-->
+<!--                    <button name="action_set_lost" string="Lost" type="object" data-hotkey="l" title="Mark as lost"-->
+<!--                            attrs="{'invisible': ['|', ('type', '=', 'opportunity'), '&amp;', ('probability', '=', 0), ('active', '=', False)]}"/>-->
+<!--                    <field name="stage_id" widget="statusbar"-->
+<!--                            options="{'clickable': '1', 'fold_field': 'fold'}"-->
+<!--                            domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"-->
+<!--                            attrs="{'invisible': ['|', ('active', '=', False), ('type', '=', 'lead')]}"/>-->
+<!--                </header>-->
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <div class="oe_button_box" name="button_box">
+                            <button name="action_schedule_meeting" type="object"
+                                class="oe_stat_button" icon="fa-calendar"
+                                context="{'partner_id': partner_id}"
+                                attrs="{'invisible': [('type', '=', 'lead')]}">
+                                <div class="o_stat_info">
+                                    <field name="calendar_event_count" class="o_stat_value"/>
+                                    <span class="o_stat_text" attrs="{'invisible': [('calendar_event_count', '&lt;', 2)]}"> Meetings</span>
+                                    <span class="o_stat_text" attrs="{'invisible': [('calendar_event_count', '&gt;', 1)]}"> Meeting</span>
+                                </div>
+                            </button>
+                            <button name="action_show_potential_duplicates" type="object"
+                                class="oe_stat_button" icon="fa-star"
+                                attrs="{'invisible': [('duplicate_lead_count', '&lt;', 1)]}">
+                                <div class="o_stat_info">
+                                    <field name="duplicate_lead_count" class="o_stat_value"/>
+                                    <span class="o_stat_text" attrs="{'invisible': [('duplicate_lead_count', '&lt;', 2)]}">Similar Leads</span>
+                                    <span class="o_stat_text" attrs="{'invisible': [('duplicate_lead_count', '&gt;', 1)]}">Similar Lead</span>
+                                </div>
+                            </button>
+                        </div>
+                    <widget name="web_ribbon" title="Lost" bg_color="bg-danger" attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}"/>
+                    <widget name="web_ribbon" title="Won" attrs="{'invisible': [('probability', '&lt;', 100)]}" />
+                    <div class="oe_title">
+                            <label for="name" string="Lead" attrs="{'invisible': [('type', '=', 'opportunity')]}"/>
+                            <label for="name" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+                            <h1><field class="o_text_overflow" name="name" placeholder="e.g. Product Pricing"/></h1>
+                            <h2 class="o_row no-gutters align-items-end">
+                                <div class="col" attrs="{'invisible': [('type', '=', 'lead')]}">
+                                    <label for="expected_revenue" class="oe_edit_only" />
+                                    <div class="o_row">
+                                        <field name="company_currency" invisible="1"/>
+                                        <field name="expected_revenue" class="oe_inline" widget='monetary' options="{'currency_field': 'company_currency'}"/>
+                                        <span class="oe_grey p-2" groups="crm.group_use_recurring_revenues"> + </span>
+                                        <span class="oe_grey p-2" groups="!crm.group_use_recurring_revenues"> at </span>
+                                    </div>
+                                </div>
+                                <div class="col" attrs="{'invisible': [('type', '=', 'lead')]}" groups="crm.group_use_recurring_revenues">
+                                    <div class="o_row">
+                                        <field name="recurring_revenue" class="pr-2 oe_inline" widget="monetary" options="{'currency_field': 'company_currency'}"/>
+                                    </div>
+                                </div>
+                                <div class="col" attrs="{'invisible': [('type', '=', 'lead')]}" groups="crm.group_use_recurring_revenues">
+                                    <div class="o_row">
+                                        <field name="recurring_plan" class="oe_inline" placeholder="E.g. Monthly"
+                                               attrs="{'required': [('recurring_revenue', '!=', 0)]}" options="{'no_create': True, 'no_open': True}"/>
+                                        <span class="oe_grey p-2"> at </span>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="oe_edit_only d-flex align-items-center">
+                                        <label for="probability"/>
+                                        <button class="btn btn-link" name="action_set_automated_probability" type="object"
+                                                attrs="{'invisible': [('is_automated_probability', '=', True)]}">
+                                            <i class="fa fa-gear" role="img" title="Switch to automatic probability" aria-label="Switch to automatic probability"></i>
+                                        </button>
+                                        <small class="oe_grey h6 mb0" attrs="{'invisible': [('is_automated_probability', '=', True)]}">
+                                            <field class="mb0" name="automated_probability" force_save="1"/> %%
+                                        </small>
+                                    </div>
+                                    <div id="probability" class="o_row d-flex">
+                                        <field name="is_automated_probability" invisible="1"/>
+                                        <field name="probability" widget="float" class="oe_inline"/>
+                                        <span class="oe_grey"> %%</span>
+                                    </div>
+                                </div>
+                            </h2>
+                        </div>
+                    <group>
+                        <group name="lead_partner" attrs="{'invisible': [('type', '=', 'opportunity')]}">
+                                <!-- Preload all the partner's information -->
+                                <field name="partner_id" widget="res_partner_many2one"
+                                    context="{
+                                        'default_name': contact_name,
+                                        'default_title': title,
+                                        'default_street': street,
+                                        'default_street2': street2,
+                                        'default_city': city,
+                                        'default_state_id': state_id,
+                                        'default_zip': zip,
+                                        'default_country_id': country_id,
+                                        'default_function': function,
+                                        'default_phone': phone,
+                                        'default_mobile': mobile,
+                                        'default_email': email_from,
+                                        'default_user_id': user_id,
+                                        'default_team_id': team_id,
+                                        'default_website': website,
+                                        'show_vat': True
+                                    }" groups="base.group_no_one"/>
+                                <field name="partner_name"/>
+                                <label for="street" string="Address"/>
+                                <div class="o_address_format">
+                                    <field name="street" placeholder="Street..." class="o_address_street"/>
+                                    <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                    <field name="city" placeholder="City" class="o_address_city"/>
+                                    <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                                    <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                </div>
+                                <field name="website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                                <field name="lang_id"/>
+                            </group>
+
+                        <group name="opportunity_partner" attrs="{'invisible': [('type', '=', 'lead')]}">
+                            <field name="partner_id"
+                                    widget="res_partner_many2one"
+                                    string="Customer"
+                                    context="{'res_partner_search_mode': type == 'opportunity' and 'customer' or False,
+                                        'default_name': contact_name or partner_name,
+                                        'default_street': street,
+                                        'default_is_company': type == 'opportunity' and contact_name == False,
+                                        'default_company_name': type == 'opportunity' and partner_name,
+                                        'default_street2': street2,
+                                        'default_city': city,
+                                        'default_title': title,
+                                        'default_state_id': state_id,
+                                        'default_zip': zip,
+                                        'default_country_id': country_id,
+                                        'default_function': function,
+                                        'default_phone': phone,
+                                        'default_mobile': mobile,
+                                        'default_email': email_from,
+                                        'default_user_id': user_id,
+                                        'default_team_id': team_id,
+                                        'default_website': website,
+                                        'show_vat': True,
+                                    }"
+                                />
+                            <field name="is_blacklisted" invisible="1"/>
+                            <field name="partner_is_blacklisted" invisible="1"/>
+                            <field name="phone_blacklisted" invisible="1"/>
+                            <field name="mobile_blacklisted" invisible="1"/>
+                            <field name="email_state" invisible="1"/>
+                            <field name="phone_state" invisible="1"/>
+                            <field name="partner_email_update" invisible="1"/>
+                            <field name="partner_phone_update" invisible="1"/>
+                            <label for="email_from" class="oe_inline"/>
+                            <div class="o_row o_row_readonly">
+                                <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger"
+                                        title="This email is blacklisted for mass mailings. Click to unblacklist."
+                                        type="object" context="{'default_email': email_from}" groups="base.group_user"
+                                        attrs="{'invisible': [('is_blacklisted', '=', False)]}"/>
+                                <field name="email_from" string="Email" widget="email"/>
+                                <span class="fa fa-exclamation-triangle text-warning oe_edit_only"
+                                        title="By saving this change, the customer email will also be updated."
+                                        attrs="{'invisible': [('partner_email_update', '=', False)]}"/>
+                            </div>
+                            <label for="phone" class="oe_inline"/>
+                            <div class="o_row o_row_readonly">
+                                <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger"
+                                        title="This phone number is blacklisted for SMS Marketing. Click to unblacklist."
+                                        type="object" context="{'default_phone': phone}" groups="base.group_user"
+                                        attrs="{'invisible': [('phone_blacklisted', '=', False)]}"/>
+                                <field name="phone" widget="phone"/>
+                                <span class="fa fa-exclamation-triangle text-warning oe_edit_only"
+                                        title="By saving this change, the customer phone number will also be updated."
+                                        attrs="{'invisible': [('partner_phone_update', '=', False)]}"/>
+                            </div>
+                        </group>
+                        <group name="lead_info" attrs="{'invisible': [('type', '=', 'opportunity')]}">
+                                <label for="contact_name"/>
+                                <div class="o_row">
+                                    <field name="contact_name"/>
+                                    <field name="title" placeholder="Title" domain="[]" options='{"no_open": True}'/>
+                                </div>
+                                <field name="is_blacklisted" invisible="1"/>
+                                <field name="phone_blacklisted" invisible="1"/>
+                                <field name="email_state" invisible="1"/>
+                                <field name="phone_state" invisible="1"/>
+                                <field name="partner_email_update" invisible="1"/>
+                                <field name="partner_phone_update" invisible="1"/>
+                                <label for="email_from_group_lead_info" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="mail_action_blacklist_remove" class="fa fa-ban text-danger"
+                                        title="This email is blacklisted for mass mailings. Click to unblacklist."
+                                        type="object" context="{'default_email': email_from}" groups="base.group_user"
+                                        attrs="{'invisible': [('is_blacklisted', '=', False)]}"/>
+                                    <field name="email_from" id="email_from_group_lead_info" string="Email" widget="email"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only"
+                                        title="By saving this change, the customer email will also be updated."
+                                        attrs="{'invisible': [('partner_email_update', '=', False)]}"/>
+                                </div>
+                                <field name="email_cc" groups="base.group_no_one"/>
+                                <field name="function"/>
+                                <label for="phone_group_lead_info" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger"
+                                        title="This phone number is blacklisted for SMS Marketing. Click to unblacklist."
+                                        type="object" context="{'default_phone': phone}" groups="base.group_user"
+                                        attrs="{'invisible': [('phone_blacklisted', '=', False)]}"/>
+                                    <field name="phone" id="phone_group_lead_info" widget="phone"/>
+                                    <span class="fa fa-exclamation-triangle text-warning oe_edit_only"
+                                        title="By saving this change, the customer phone number will also be updated."
+                                        attrs="{'invisible': [('partner_phone_update', '=', False)]}"/>
+                                </div>
+                                <label for="mobile" class="oe_inline"/>
+                                <div class="o_row o_row_readonly">
+                                    <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger"
+                                        title="This phone number is blacklisted for SMS Marketing. Click to unblacklist."
+                                        type="object" context="{'default_phone': mobile}" groups="base.group_user"
+                                        attrs="{'invisible': [('mobile_blacklisted', '=', False)]}"/>
+                                    <field name="mobile" widget="phone" string="Mobile"/>
+                                </div>
+                            </group>
+                        <group attrs="{'invisible': [('type', '=', 'lead')]}">
+                                <field name="date_deadline"/>
+                                <field name="priority" widget="priority"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                            </group>
+                        <group>
+                            <field name="user_id"
+                                    context="{'default_sales_team_id': team_id}" widget="many2one_avatar_user"/>
+                            <field name="team_id" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="type" invisible="1"/>
+                        </group>
+                        <group name="lead_priority" attrs="{'invisible': [('type', '=', 'opportunity')]}">
+                                <field name="priority" widget="priority"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                            </group>
+                        <group name="opportunity_info" attrs="{'invisible': [('type', '=', 'lead')]}">
+                            <field name="lost_reason" attrs="{'invisible': [('active', '=', True)]}"/>
+                            <field name="date_conversion" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="user_company_ids" invisible="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Internal Notes" name="internal_notes">
+                                <field name="description" placeholder="Add a description..."/>
+                            </page>
+                        <page name="extra" string="Extra Info" attrs="{'invisible': [('type', '=', 'opportunity')]}">
+                                <group>
+                                    <group string="Email" groups="base.group_no_one">
+                                        <field name="message_bounce" readonly="1"/>
+                                    </group>
+                                    <group string="Tracking" name="categorization">
+                                        <field name="company_id"
+                                            groups="base.group_multi_company"
+                                            options="{'no_create': True}"/>
+                                        <field name="campaign_id" />
+                                        <field name="medium_id"/>
+                                        <field name="source_id"/>
+                                        <field name="referred"/>
+                                    </group>
+                                    <group string="Analysis">
+                                        <field name="date_open"/>
+                                        <field name="date_closed"/>
+                                    </group>
+                                </group>
+                            </page>
+                        <page name="lead" string="Extra Information" attrs="{'invisible': [('type', '=', 'lead')]}">
+                            <group>
+                                <group string="Contact Information">
+                                    <field name="partner_name"/>
+                                    <label for="street_page_lead" string="Address"/>
+                                    <div class="o_address_format">
+                                        <field name="street" id="street_page_lead" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                        <field name="state_id" class="o_address_state" placeholder="State" options='{"no_open": True}'/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                                    </div>
+                                    <field name="website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                                    <field name="lang_id" options="{'no_create': True}"/>
+                                </group>
+                                <group class="mt48">
+                                    <label for="contact_name_page_lead"/>
+                                    <div class="o_row">
+                                        <field name="contact_name" id="contact_name_page_lead"/>
+                                        <field name="title" placeholder="Title" domain="[]" options='{"no_open": True}'/>
+                                    </div>
+                                    <field name="function"/>
+                                    <label for="mobile_page_lead" class="oe_inline"/>
+                                    <div class="o_row o_row_readonly">
+                                        <button name="phone_action_blacklist_remove" class="fa fa-ban text-danger"
+                                                title="This phone number is blacklisted for SMS Marketing. Click to unblacklist."
+                                                type="object" context="{'default_phone': mobile}" groups="base.group_user"
+                                                attrs="{'invisible': [('mobile_blacklisted', '=', False)]}"/>
+                                        <field name="mobile" id="mobile_page_lead" widget="phone"/>
+                                    </div>
+                                </group>
+                                <group string="Marketing">
+                                    <field name="campaign_id" />
+                                    <field name="medium_id" />
+                                    <field name="source_id" />
+                                </group>
+                                <group string="Misc" name="Misc">
+                                    <field name="day_open" groups="base.group_no_one"/>
+                                    <field name="day_close" groups="base.group_no_one"/>
+                                    <field name="referred"/>
+                                    <field name="type" invisible="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- 预付款审核列表打开form配置 -->
+<!--    <record id="crm_xks_review_leads_tree" model="ir.actions.act_window.view">-->
+<!--        <field name="view_mode">form</field>-->
+<!--        <field name="sequence" eval="3"/>-->
+<!--        <field name="act_window_id" ref="crm_xks_advance_confirmed"/>-->
+<!--        <field name="view_id" ref="crm_lead_xks_view_form" />-->
+<!--    </record>-->
+
+
+
+
+</odoo>

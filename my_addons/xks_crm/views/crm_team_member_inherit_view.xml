@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+    <record id="crm_team_member_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">旭科晟团队成员</field>
+        <field name="model">crm.team.member</field>
+        <field name="inherit_id" ref="sales_team.crm_team_member_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="monthly_goal"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

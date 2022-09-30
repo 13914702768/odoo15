@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+    <!-- tree视图 -->
+    <record id="purchase_order_pay_xks_tree_view" model="ir.ui.view">
+        <field name="name">purchase.order.pay.xks.tree</field>
+        <field name="model">purchase.order.pay.xks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" width="5%"/>
+                <field name="purchase_order_id" width="10%"/>
+                <field name="pay_project" width="5%"/>
+                <field name="percentage" width="5%"/>
+                <field name="purchase_order_line_pay_ids" width="70%"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="purchase_order_pay_xks_form_view" model="ir.ui.view">
+        <field name="name">purchase.order.pay.xks.form</field>
+        <field name="model">purchase.order.pay.xks</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <!-- 提交采购预付款申请 -->
+                    <button name="apply_for_purchase_advance" string="Apply For Purchase Advance" type="object" class="oe_highlight"
+                            attrs="{'invisible': ['|', ('pay_project', '!=', '1'), ('order_state', '!=', '0')]}"/>
+                    <!-- 提醒客户付款 -->
+                    <button name="remind_customer_delivery" string="Remind Customer Delivery" type="object" class="oe_highlight"
+                           attrs="{'invisible': ['|', ('pay_project', '!=', '2'), ('order_state', '!=', '0')]}"/>
+
+                </header>
+                <sheet>
+                    <group>
+                        <field name="purchase_order_id" invisible="1" options="{'no_open': True,'no_create': True}" width="100%"/>
+                        <field name="name"/>
+                    </group>
+                    <group string="Purchase Pay">
+                        <group>
+                            <field name="pay_project"/>
+                            <field name="order_state" invisible="1"/>
+                            <field name="percentage"/>
+                            <field name="remark"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="purchase_order_pay_invoice" placeholder="Purchase Pay Invoice..."/>
+                            </group>
+                            <group>
+                                <field name="purchase_pay_state" groups="account.group_account_manager"/>
+                            </group>
+                        </group>
+                    </group>
+                    <group string="Customer Pay" col="4">
+                        <group>
+                            <field name="customer_advance_invoice" />
+                        </group>
+                        <group>
+                            <field name="customer_middle_invoice"/>
+                        </group>
+                        <group>
+                            <field name="customer_balance_invoice"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <!-- 支付订单行 -->
+                        <page string="Purchase Order Line">
+                            <field name="purchase_order_line_pay_ids"  context="{'purchase_order_id': purchase_order_id}">
+                                <!-- 可以在此处直接定义tree视图或form视图 -->
+                                <tree>
+                                    <field name="purchase_order_line_id" />
+                                    <field name="product_qty" />
+                                    <field name="price_unit" />
+                                    <field name="payment_qty" />
+                                    <field name="price_pay" />
+                                    <field name="unpaid_qty" />
+                                    <field name="price_unpaid" />
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <group>
+                                                <field name="purchase_order_line_id" options="{'no_open': True,'no_create': True}" />
+                                            </group>
+                                            <group></group>
+                                        </group>
+                                        <group>
+                                            <group>
+                                                <field name="purchase_order" invisible="1"/>
+                                                <field name="product_qty"/>
+                                                <field name="unpaid_qty"/>
+                                                <field name="payment_qty"/>
+                                            </group>
+                                            <group>
+                                                 <field name="price_unit"/>
+                                                 <field name="price_unpaid"/>
+                                                 <field name="price_pay"/>
+                                            </group>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="purchase_order_pay_xks_action_window" model="ir.actions.act_window">
+        <field name="name">purchase.order.pay.xks.action</field>
+        <field name="res_model">purchase.order.pay.xks</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+</odoo>

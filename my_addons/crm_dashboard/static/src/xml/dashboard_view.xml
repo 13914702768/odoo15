@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <t t-name="CRMdashboard">
+         <div class="oh_dashboards">
+            <div class="container-fluid my-5 o_hr_dashboard"/>
+        </div>
+    </t>
+    <t t-name="LoginUser">
+        <section class="dashboard_main_section" id="main_section_login">
+            <div class="row">
+                <div class="col-sm-12 mb-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-8">
+                            <h2 class="section-header">CRM Dashboard</h2>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-2">
+                            <form class="form-group">
+                                <label class="width50_margin_top10_left210">销售:&amp;nbsp;&amp;nbsp;&amp;nbsp;</label>
+                                <select id="search_user" class="form-control margin_top30_left265">
+                                    <option value="0">All</option>
+                                    <t t-foreach="widget.team_users" t-as="user">
+                                        <option t-att-value="user[0]"><t t-esc="user[1]"/></option>
+                                    </t>
+                                </select>
+                            </form>
+                        </div>
+<!--                        <div class="col-sm-12 col-md-8" style="height: 90%">-->
+<!--                            <div class="sales_activity_pie_div half_chart chart-container card-shadow width_height_float_left">-->
+<!--                                <h2>CRM Activity</h2>-->
+<!--                                <hr/>-->
+<!--                                <div class="graph_canvas margin_top50" id="crm_activity_div"></div>-->
+<!--                            </div>-->
+<!--                            <div class="leads_month_pie_div half_chart chart-container card-shadow width_height_float_right" style="height:52%">-->
+<!--                                <div class="half_chart chart-container card-shadow95">-->
+<!--                                    <h3 class="h5">Upcoming Activities</h3>-->
+<!--                                    <hr/>-->
+<!--                                    <div class="crm_scroll_table">-->
+<!--                                        <div class="items-table">-->
+<!--                                            <div class="item-container" id="upcoming_activities_item_div">-->
+<!--                                                <t t-foreach="widget.upcoming_events" t-as="activity">-->
+<!--                                                <div class="item-header activity" t-att-data-id="activity[7]">-->
+<!--                                                    <div class="count-container">-->
+<!--                                                        <t t-esc="activity[1]"/>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="item-title pl-3">-->
+<!--                                                        <div class="item-content">-->
+<!--                                                            <ul>-->
+<!--                                                                <li>-->
+<!--                                                                    Activity:-->
+<!--                                                                    <span style="font-size: 16px;color: #4c4c4c;">-->
+<!--                                                                        <t t-esc="activity[4]"/>-->
+<!--                                                                    </span>-->
+<!--                                                                </li>-->
+<!--                                                                <li>-->
+<!--                                                                    Name:-->
+<!--                                                                    <span style="font-size: 15px;color: #4c4c4c;">-->
+<!--                                                                        <t t-esc="activity[3]"/>-->
+<!--                                                                    </span>-->
+<!--                                                                </li>-->
+<!--                                                                <li>-->
+<!--                                                                    Sale:-->
+<!--                                                                    <span style="font-size: 15px;color: #4c4c4c;">-->
+<!--                                                                        <t t-esc="activity[6]"/>-->
+<!--                                                                    </span>-->
+<!--                                                                </li>-->
+<!--                                                                <li t-if="activity[2]">-->
+<!--                                                                    Summary:-->
+<!--                                                                    <span style="font-size: 13px;color: #4c4c4c;">-->
+<!--                                                                        <t t-esc="activity[2]"/>-->
+<!--                                                                    </span>-->
+<!--                                                                </li>-->
+<!--                                                            </ul>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                                </t>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="col-12 col-sm-12 col-md-4" style="height: 90%">
+                                <div class="monthly_goal_div half_chart chart-container card-shadow">
+                                    <h3 class="h5">Monthly Goal</h3>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-6"> </div>
+                                        <form class="form-group col-6">
+                                            <select id="monthly_goal_choose" class="form-control" >
+                                                <t t-foreach="widget.month_times" t-as="month">
+                                                    <t t-if="month[0] != month[2]">
+                                                        <option t-att-value="month[0]"><t t-esc="month[1]"/></option>
+                                                    </t>
+                                                    <t t-if="month[0] == month[2]">
+                                                        <option t-att-value="month[0]" selected="selected"><t t-esc="month[1]"/></option>
+                                                    </t>
+                                                </t>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <input type="hidden" id="percentage_crm-month" name="percentage_crm" t-att-value="widget.monthly_goals[3]"/>
+                                    <div class="gauge gauge--liveupdate" id="gauge-month" >
+                                        <div class="gauge__container">
+                                            <div class="gauge__background"/>
+                                            <div class="gauge__center"/>
+                                            <div class="gauge__data"/>
+                                            <div class="gauge__needle"/>
+                                        </div>
+                                        <div class="gauge__labels mdl-typography__headline-month">
+                                            <span class="gauge__label--low">
+                                                <b><t t-esc="widget.monthly_goals[2]"/><t t-esc="widget.monthly_goals[0]"/></b>
+                                            </span>
+                                            <span class="gauge__label--spacer"/>
+                                            <span class="gauge__label--high">
+                                                <b><t t-esc="widget.monthly_goals[2]"/><t t-esc="widget.monthly_goals[1]"/></b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-4" style="height: 90%">
+                                <div class="monthly_goal_div half_chart chart-container card-shadow">
+                                    <h3 class="h5">Quarter Goal</h3>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-6"> </div>
+                                        <form class="form-group col-6">
+                                            <select id="quarter_goal_choose" class="form-control">
+                                                <t t-foreach="widget.quarter_times" t-as="quarter">
+                                                    <t t-if="quarter[0] != quarter[2]">
+                                                        <option t-att-value="quarter[0]"><t t-esc="quarter[1]"/></option>
+                                                    </t>
+                                                    <t t-if="quarter[0] == quarter[2]">
+                                                        <option t-att-value="quarter[0]" selected="selected"><t t-esc="quarter[1]"/></option>
+                                                    </t>
+                                                </t>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <input type="hidden" id="percentage_crm-quarter" name="percentage_crm" t-att-value="widget.quarter_goals[3]"/>
+                                    <div class="gauge gauge--liveupdate" id="gauge-quarter" >
+                                        <div class="gauge__container">
+                                            <div class="gauge__background"/>
+                                            <div class="gauge__center"/>
+                                            <div class="gauge__data"/>
+                                            <div class="gauge__needle"/>
+                                        </div>
+                                        <div class="gauge__labels mdl-typography__headline-quarter">
+                                            <span class="gauge__label--low">
+                                                <b><t t-esc="widget.quarter_goals[2]"/><t t-esc="widget.quarter_goals[0]"/></b>
+                                            </span>
+                                            <span class="gauge__label--spacer"/>
+                                            <span class="gauge__label--high">
+                                                <b><t t-esc="widget.quarter_goals[2]"/><t t-esc="widget.quarter_goals[1]"/></b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-4" style="height: 90%">
+                                <div class="monthly_goal_div half_chart chart-container card-shadow">
+                                    <h3 class="h5">Year Goal</h3>
+                                    <hr/>
+                                    <div class="row">
+                                        <div class="col-6"> </div>
+                                        <form class="form-group col-6">
+                                            <select id="year_goal_choose" class="form-control">
+                                                <t t-foreach="widget.year_times" t-as="year">
+                                                    <t t-if="year[0] != year[2]">
+                                                        <option t-att-value="year[0]"><t t-esc="year[1]"/></option>
+                                                    </t>
+                                                    <t t-if="year[0] == year[2]">
+                                                        <option t-att-value="year[0]" selected="selected"><t t-esc="year[1]"/></option>
+                                                    </t>
+                                                </t>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <input type="hidden" id="percentage_crm-year" name="percentage_crm" t-att-value="widget.year_goals[3]"/>
+                                    <div class="gauge gauge--liveupdate" id="gauge-year" >
+                                        <div class="gauge__container">
+                                            <div class="gauge__background"/>
+                                            <div class="gauge__center"/>
+                                            <div class="gauge__data"/>
+                                            <div class="gauge__needle"/>
+                                        </div>
+                                        <div class="gauge__labels mdl-typography__headline-year">
+                                            <span class="gauge__label--low">
+                                                <b><t t-esc="widget.year_goals[2]"/><t t-esc="widget.year_goals[0]"/></b>
+                                            </span>
+                                            <span class="gauge__label--spacer"/>
+                                            <span class="gauge__label--high">
+                                                <b><t t-esc="widget.year_goals[2]"/><t t-esc="widget.year_goals[1]"/></b>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-2">
+                            <form class="form-group">
+                                <label class="margin_top10">时间:</label>
+                                <select id="income_expense_values" class="form-control margin_top30_left30">
+                                    <option id="this_all"
+                                            value="this_all">All</option>
+                                    <option id="this_year"
+                                            value="this_year">This Year</option>
+                                    <option id="this_month"
+                                            value="this_month"
+                                            selected="">This Month</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </section>
+    </t>
+    <t t-name="Managercrm">
+        <section class="dashboard_main_section" id="main_section_manager">
+            <div class="crm_dash_cards row">
+                <div class="col-sm-12 col-md-2">
+                    <div class="dashboard-card card-shadow my_lead">
+                        <div
+                                class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-line-chart text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="leads_this_all"/>
+                                    <div id="leads_this_year"/>
+                                    <div id="leads_this_quarter"/>
+                                    <div id="leads_this_month"/>
+                                    <div id="leads_this_week"/>
+                                </span>
+                            </h3>
+                            <h4>My Leads</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-2">
+                    <div class="dashboard-card card-shadow opportunity">
+                        <div
+                                class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-trophy text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="opp_this_all"/>
+                                    <div id="opp_this_year"/>
+                                    <div id="opp_this_quarter"/>
+                                    <div id="opp_this_month"/>
+                                    <div id="opp_this_week"/>
+                                </span>
+                            </h3>
+                            <h4>My Opportunities</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-2">
+                    <div class="dashboard-card card-shadow exp_revenue">
+                        <div
+                                class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-usd text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="exp_rev_this_all"/>
+                                    <div id="exp_rev_this_year"/>
+                                    <div id="exp_rev_this_quarter"/>
+                                    <div id="exp_rev_this_month"/>
+                                    <div id="exp_rev_this_week"/>
+                                </span>
+                            </h3>
+                            <h4>Expected Revenue</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-2">
+                    <div class="dashboard-card card-shadow revenue_card revenue_card">
+                        <div
+                                class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-usd text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="rev_this_all"/>
+                                    <div id="rev_this_year"/>
+                                    <div id="rev_this_quarter"/>
+                                    <div id="rev_this_month"/>
+                                    <div id="rev_this_week"/>
+                                </span>
+                            </h3>
+                            <h4>Revenue</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-2">
+                    <div class="dashboard-card card-shadow win_ratio">
+                        <div
+                                class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-percent text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="ratio_this_all"/>
+                                    <div id="ratio_this_year"/>
+                                    <div id="ratio_this_quarter"/>
+                                    <div id="ratio_this_month"/>
+                                    <div id="ratio_this_week"/>
+                                </span>
+                            </h3>
+                            <h4>Win Ratio</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                    <div class="dashboard-card card-shadow customer">
+                        <div
+                                class="dashboard-card__icon-container bg-mauve-light d-flex justify-content-center align-items-center">
+                            <i class="fa fa-user-circle-o text-mauve"/>
+                        </div>
+                        <div class="dashboard-card__details">
+                            <h3>
+                                <span>
+                                    <div id="customer_this_all"/>
+                                </span>
+                            </h3>
+                            <h4>My Customer</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="funnel_chart_div col-sm-12 col-md-4">
+                    <div class="chart-container card-shadow">
+                        <h2>Funnel Chart</h2>
+                        <hr/>
+                        <div class="funnel">
+                            <div id="container" class="mt-4" width="100%" height="auto"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                    <div class="sales_activity_pie_div half_chart chart-container card-shadow width_height_float_left">
+                        <h2>CRM Activity</h2>
+                        <hr/>
+                        <div class="graph_canvas margin_top50" id="crm_activity_div"></div>
+                    </div>
+                    <div class="leads_month_pie_div half_chart chart-container card-shadow width_height_float_right">
+                        <h2>Leads by Month</h2>
+                        <hr/>
+                        <div class="graph_canvas margin_top50" id="leads_by_month_div"></div>
+                    </div>
+                    <div class="leads_month_pie_div half_chart chart-container card-shadow width_height_float_left" style="height:52%">
+                        <div class="half_chart chart-container card-shadow95">
+                            <h3 class="h5">Upcoming Activities</h3>
+                            <hr/>
+                            <div class="crm_scroll_table">
+                                <div class="items-table">
+                                    <div class="item-container" id="upcoming_activities_item_div">
+                                        <t t-foreach="widget.upcoming_events" t-as="activity">
+                                        <div class="item-header activity" t-att-data-id="activity[7]">
+                                            <div class="count-container">
+                                                <t t-esc="activity[1]"/>
+                                            </div>
+                                            <div class="item-title pl-3">
+                                                <div class="item-content">
+                                                    <ul>
+                                                        <li>
+                                                            Activity:
+                                                            <span style="font-size: 16px;color: #4c4c4c;">
+                                                                <t t-esc="activity[4]"/>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            Name:
+                                                            <span style="font-size: 15px;color: #4c4c4c;">
+                                                                <t t-esc="activity[3]"/>
+                                                            </span>
+                                                        </li>
+                                                        <li>
+                                                            Sale:
+                                                            <span style="font-size: 15px;color: #4c4c4c;">
+                                                                <t t-esc="activity[6]"/>
+                                                            </span>
+                                                        </li>
+                                                        <li t-if="activity[2]">Summary:
+                                                        <span style="font-size: 13px;color: #4c4c4c;">
+                                                            <t t-esc="activity[2]"/>
+                                                        </span>
+                                                    </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="leads_month_pie_div half_chart chart-container card-shadow width_height_float_right" style="height:52%">
+                        <div class="leads_source_pie_div half_chart chart-container card-shadow95">
+                            <h3 class="h5">Leads group by Source</h3>
+                            <hr/>
+                            <div class="graph_canvas margin_top50" id="leads_source"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="year_to_date_graph_div col-sm-12 col-md-7">
+                    <div class="chart-container card-shadow">
+                        <h2>Sales Performance</h2>
+                        <hr/>
+                        <div class="col-12 col-sm-12 col-md-2 float_left">
+                            <form class="form-group">
+                                <label class="margin_top10">时间:</label>
+                                <select id="search_sales_performance_type" class="form-control margin_top30_left30">
+                                    <option value="1">本月</option>
+                                    <option value="2">本年</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-2 float_left">
+                            <form class="form-group">
+                                <label class="margin_top10">&amp;nbsp;&amp;nbsp;&amp;nbsp;团队:</label>
+                                <select id="search_sales_performance_team" class="form-control margin_top30_left45">
+                                    <option value="0">All</option>
+                                    <t t-foreach="widget.teams" t-as="user">
+                                        <option t-att-value="user[0]"><t t-esc="user[1]"/></option>
+                                    </t>
+                                </select>
+                            </form>
+                        </div>
+                        <!-- 销售业绩柱状图 -->
+                        <div class="graph_canvas margin_top80" id="sales_performance_div"></div>
+                    </div>
+                </div>
+                <div class="revenue_count_pie_div col-12 col-sm-12 col-md-5">
+                     <div class="chart-container card-shadow">
+                        <h3 class="h5">Total Revenue by Salesperson</h3>
+                         <hr/>
+                         <div class="col-12 col-sm-12 col-md-2 float_left">
+                            <form class="form-group">
+                                <label class="margin_top10">时间:</label>
+                                <select id="search_sales_revenue_type" class="form-control margin_top30_left30">
+                                    <option value="1">本月</option>
+                                    <option value="2">本年</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-2 float_left">
+                            <form class="form-group">
+                                <label class="margin_top10">&amp;nbsp;&amp;nbsp;&amp;nbsp;团队:</label>
+                                <select id="search_sales_revenue_team" class="form-control margin_top30_left45">
+                                    <option value="0">All</option>
+                                    <t t-foreach="widget.teams" t-as="user">
+                                        <option t-att-value="user[0]"><t t-esc="user[1]"/></option>
+                                    </t>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-2 float_left">
+                            <form class="form-group">
+                                <label class="margin_top10_left50">&amp;nbsp;&amp;nbsp;&amp;nbsp;销售:</label>
+                                <select id="search_revenue_user" class="form-control margin_top30_left60px">
+                                    <option value="0">All</option>
+                                    <t t-foreach="widget.team_users" t-as="user">
+                                        <option t-att-value="user[0]"><t t-esc="user[1]"/></option>
+                                    </t>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="graph_canvas margin_top80" id="total_revenue_by_salesperson_div"></div>
+                     </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="top_country_revenue_div col-12 col-sm-12 col-md-4">
+                    <div class="chart-container card-shadow">
+                        <h3 class="h5">Country Ranking</h3>
+                        <hr/>
+                        <table class="table table-hover" id="country_revenue_table">
+                            <thead>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>Revenue</th>
+                                    <th>Proportion</th>
+                                    <th>Number Of Customers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="widget.top_country_revenue" t-as="activity">
+                                    <tr>
+                                        <td><t t-esc="activity[0]"/></td>
+                                        <td><t t-esc="activity[2]"/><t t-esc="activity[1]"/></td>
+                                        <td><t t-esc="activity[3]"/></td>
+                                        <td><t t-esc="activity[4]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="top_country_count_div col-12 col-sm-12 col-md-4">
+                    <div class="chart-container card-shadow">
+                        <h3 class="h5">City Ranking</h3>
+                        <hr/>
+                        <div class="col-12 col-sm-12 col-md-2 float_left">
+                            <form class="form-group">
+                                <label class="margin_top10">团队:</label>
+                                <select id="search_city_ranking_team" class="form-control margin_top30_left45">
+                                    <option value="0">All</option>
+                                    <t t-foreach="widget.teams" t-as="user">
+                                        <option t-att-value="user[0]"><t t-esc="user[1]"/></option>
+                                    </t>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-2 float_left" id="search_city_ranking_user_form">
+                            <form class="form-group">
+                                <label class="width50_margin_top10_left210">销售:&amp;nbsp;&amp;nbsp;&amp;nbsp;</label>
+                                <select id="search_city_ranking_user" class="form-control margin_top30_left265">
+                                    <option value="0">All</option>
+                                    <t t-foreach="widget.team_users" t-as="user">
+                                        <option t-att-value="user[0]"><t t-esc="user[1]"/></option>
+                                    </t>
+                                </select>
+                            </form>
+                        </div>
+                        <table class="table table-hover" id="country_count_table">
+                            <thead>
+                                <tr>
+                                    <th>City</th>
+                                    <th>Revenue</th>
+                                    <th>Proportion</th>
+                                    <th>Number Of Customers</th>
+                                </tr>
+                            </thead>
+                            <tbody id="city_ranking_tbody">
+                                <t t-foreach="widget.top_city_revenue" t-as="activity">
+                                    <tr>
+                                        <td><t t-esc="activity[0]"/></td>
+                                        <td><t t-esc="activity[2]"/><t t-esc="activity[1]"/></td>
+                                        <td><t t-esc="activity[3]"/></td>
+                                        <td><t t-esc="activity[4]"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </t>
+
+    <t t-name="Admincrm">
+        <section class="dashboard_main_section" id="main_section_admin">
+            <div class="row mt-5">
+<!--                <div class="col-sm-12 col-md-4">-->
+<!--                    <div class="top_deals_div chart-container card-shadow">-->
+<!--                        <h2>Top Deals</h2>-->
+<!--                        <hr/>-->
+<!--                        <div class="items-table">-->
+<!--                            <div class="item-container">-->
+<!--                                <t t-foreach="widget.top_deals" t-as="activity">-->
+<!--                                <div class="item-header">-->
+<!--                                    <div class="count-container">-->
+<!--                                        <t t-esc="activity[7]"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="item-title pl-3">-->
+<!--                                        <h3><t t-esc="activity[3]"/>. <t t-esc="activity[6]"/><t t-esc="activity[2]"/></h3>-->
+<!--                                        <div class="item-content">-->
+<!--                                            <ul>-->
+<!--                                                <li>-->
+<!--                                                    Sales Person: <t t-esc="activity[0]"/>,&amp;nbsp-->
+<!--                                                    Team: <t t-esc="activity[5]"/>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                </t>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-12 col-sm-12 col-md-4">-->
+<!--                    <div class="leads_source_pie_div half_chart chart-container card-shadow">-->
+<!--                        <h3 class="h5">Leads group by Source</h3>-->
+<!--                        <hr/>-->
+<!--                        <div class="graph_canvas">-->
+<!--                            <canvas class="source_lead" width="200" height="120"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </section>
+    </t>
+
+
+</templates>

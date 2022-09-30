@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+    <record id="purchase_order_inherit_xks_form" model="ir.ui.view">
+        <field name="name">purchase.order.inherit.xks.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='partner_id']" position="before">
+                 <field name="opportunity_id"/>
+             </xpath>
+             <!-- 新增合同订单Page -->
+             <xpath expr="//page[@name='purchase_delivery_invoice']" position="after">
+                  <page string="合同订单" attrs="{'invisible': [('opportunity_id', '=', False)]}">
+                       <field name="opportunity_order_lines" widget="section_and_note_one2many" mode="tree"
+                              context="{'default_show_type': '2' }" >
+                           <tree string="合同订单行" editable="bottom" >
+                                <field name="product_template_id"  force_save="1" widget="product_configurator" />
+                                <field name="product_model"/>
+                                <field name="optional_configure"/>
+                                <field name="product_uom_qty"/>
+                                <field name="x_remark"/>
+                           </tree>
+                           <form>
+                              <sheet>
+                                  <group>
+                                      <group>
+                                          <field name="product_id" force_save="1" widget="product_configurator" />
+                                          <field name="product_uom_qty"/>
+                                      </group>
+                                      <group>
+                                          <field name="product_model"/>
+                                          <field name="optional_configure"/>
+                                          <field name="x_remark"/>
+                                      </group>
+                                  </group>
+                              </sheet>
+                        </form>
+                       </field>
+                  </page>
+              </xpath>
+             <!-- 产品页新增合同  支付信息 -->
+             <xpath expr="//page[@name='products']/div[@class='oe_clear']" position="before">
+                   <group  string="Contract">
+                       <group>
+                           <h5>Purchase Contract Attachments</h5>
+                           <div name="button_box">
+                               <button name="action_get_purchase_contract_attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                   <field name="purchase_contract_attachment_number" string="Upload Purchase Contract Attachments"/>
+                               </button>
+                           </div>
+                       </group>
+                   </group>
+             </xpath>
+             <xpath expr="//page[@name='products']/field[@name='order_line']" position="before">
+                 <group>
+                     <button name="open_purchase_order_pay_list" type="object" string="Batch Purchase Order Pay"
+                             class="oe_highlight"/>
+                 </group>
+             </xpath>
+
+            <xpath expr="//page[@name='products']/field[@name='order_line']" position="attributes">
+                <attribute  name="mode">tree,form,kanban</attribute>
+            </xpath>
+            <!-- 重写采购订单行tree视图 -->
+            <xpath expr="//page[@name='products']/field[@name='order_line']/tree" position="replace">
+                <tree string="Purchase Order Lines" context="{'default_show_type': '2' }">
+                    <control>
+                        <create name="add_product_control" string="Add a product"/>
+                        <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                        <create name="add_note_control" string="Add a note" context="{'default_display_type': 'line_note'}"/>
+                    </control>
+                    <field name="display_type" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="state" invisible="1"/>
+                    <field name="product_type" invisible="1"/>
+                    <field name="product_uom_category_id" invisible="1"/>
+                    <field name="invoice_lines" invisible="1"/>
+                    <field name="sequence" widget="handle"/>
+                    <field name="product_id" invisible="1"
+                           attrs="{
+                                   'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))],
+                                   'required': [('display_type', '=', False)],
+                           }"
+                           context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}"
+                           force_save="1" domain="[('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                    <field name="product_template_id"
+                           attrs="{
+                                   'readonly': [('state', 'in', ('purchase', 'to approve','done', 'cancel'))],
+                                   'required': [('display_type', '=', False)],
+                           }"
+                           context="{'partner_id':parent.partner_id, 'quantity':product_qty,'uom':product_uom, 'company_id': parent.company_id}"
+                           force_save="1" domain="[('purchase_ok', '=', True), '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                    <field name="product_model"/>
+                    <field name="optional_configure"/>
+                    <field name="name" widget="section_and_note_text" invisible="1"/>
+                    <field name="date_planned" optional="hide" attrs="{'required': [('display_type', '=', False)]}" force_save="1"/>
+                    <field name="account_analytic_id" optional="hide" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                    <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
+                    <field name="product_qty"/>
+                    <field name="qty_received_manual" invisible="1"/>
+                    <field name="qty_received_method" invisible="1"/>
+                    <field name="qty_received" string="Received" attrs="{'column_invisible': '1', 'readonly': [('qty_received_method', '!=', 'manual')]}" optional="show"/>
+                    <field name="qty_invoiced" string="Billed" attrs="{'column_invisible': '1'}" optional="show"/>
+                    <field name="product_uom" string="UoM" groups="uom.group_uom"
+                                        attrs="{
+                                            'readonly': [('state', 'in', ('purchase', 'done', 'cancel'))],
+                                            'required': [('display_type', '=', False)]
+                                        }"
+                                        force_save="1" optional="show"/>
+                    <field name="product_packaging_qty" attrs="{'invisible': ['|', ('product_id', '=', False), ('product_packaging_id', '=', False)]}" groups="product.group_stock_packaging" optional="show"/>
+                    <field name="product_packaging_id" attrs="{'invisible': [('product_id', '=', False)]}" context="{'default_product_id': product_id, 'tree_view_ref':'product.product_packaging_tree_view', 'form_view_ref':'product.product_packaging_form_view'}" groups="product.group_stock_packaging" optional="show"/>
+                    <field name="price_unit" attrs="{'readonly': [('qty_invoiced', '!=', 0)]}"/>
+                    <field name="taxes_id" invisible="1" widget="many2many_tags" domain="[('type_tax_use','=','purchase'), ('company_id', '=', parent.company_id), ('country_id', '=', parent.tax_country_id)]" context="{'default_type_tax_use': 'purchase', 'search_view_ref': 'account.account_tax_view_search'}" options="{'no_create': True}" optional="show"/>
+                    <field name="price_subtotal" widget="monetary"/>
+                </tree>
+            </xpath>
+            <!-- 订单行form视图隐藏开票及入向送货 -->
+            <xpath expr="//page[@name='invoices_incoming_shiptments']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏收到数量 -->
+            <xpath expr="//page[@name='products']/field[@name='order_line']/form/group/group[1]/field[@name='qty_received']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏开单数量 -->
+            <xpath expr="//page[@name='products']/field[@name='order_line']/form/group/group[1]/field[@name='qty_invoiced']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏税金设置 -->
+            <xpath expr="//page[@name='products']/field[@name='order_line']/form/group/group[1]/field[@name='taxes_id']" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+            <!-- 订单行form视图隐藏送货日期 -->
+            <xpath expr="//page[@name='products']/field[@name='order_line']/form/group/group[2]" position="attributes">
+                <attribute  name="invisible">1</attribute>
+            </xpath>
+             <!-- 产品页订单行新增当前状态 -->
+             <xpath expr="//page[@name='products']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+                 <field name="current_state" readonly="1"/>
+             </xpath>
+             <!-- 新增按钮 -->
+             <xpath expr="//page[@name='products']/field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+                 <!-- 确认预付款进入生产阶段 -->
+<!--                 <button name="confirm_advance_pay" type="object" string="Advance Pay" class="oe_highlight"-->
+<!--                         attrs="{'invisible': [('current_state', '!=', '2')]}" groups="account.group_account_manager"/>-->
+                 <!-- 打开生产状态列表 -->
+                 <button name="open_product_produce_list" type="object" string="Produce State" class="oe_highlight"
+                         attrs="{'invisible': [('current_state', '!=', '3')]}"/>
+                 <!-- 打开验货列表 -->
+                 <button name="open_product_inspection_list" type="object" string="Inspection" class="oe_highlight"
+                         attrs="{'invisible': [('current_state', '!=', '4')]}"/>
+                 <!-- 打开发货列表 -->
+                 <button name="open_product_ship_list" type="object" string="Ship" class="oe_highlight"
+                         attrs="{'invisible': [('current_state', '!=', '6')]}" />
+             </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_inherit_xks_tree" model="ir.ui.view">
+        <field name="name">purchase.order.inherit.xks.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='message_unread']" position="after">
+                 <field name="opportunity_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_inherit_xks_kanban" model="ir.ui.view">
+        <field name="name">purchase.order.inherit.xks.kanban</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                 <field name="opportunity_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+    <record id="product_product_inherit_xks_view_from" model="ir.ui.view">
+        <field name="name">product.product.inherit.xks.from</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_standard_price']/div[@name='pricing']" position="after">
+                <field name="m_quote" class="oe_inline" widget='monetary'
+                                        options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                <field name="r_quote" class="oe_inline" widget='monetary'
+                                        options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+            </xpath>
+			<xpath expr="//field[@name='default_code']" position="after">
+                <field name="external_model"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

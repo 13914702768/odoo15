@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="gbk" ?>
+<odoo>
+    <!-- tree视图 -->
+    <record id="product_inspection_xks_tree_view" model="ir.ui.view">
+        <field name="name">product.inspection.xks.tree</field>
+        <field name="model">product.inspection.xks</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="purchase_order_line_id" width="20%"/>
+                <field name="name" width="15%"/>
+                <field name="quantity" width="3%"/>
+                <field name="receive_time" width="5%"/>
+                <field name="is_qualified" width="3%"/>
+                <field name="inspection_time" width="5%"/>
+                <field name="inspection_description" width="15%"/>
+                <field name="remark" width="25%"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_inspection_xks_form_view" model="ir.ui.view">
+        <field name="name">product.inspection.xks.form</field>
+        <field name="model">product.inspection.xks</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group string="Purchase Order">
+                        <field name="purchase_order_line_id" options="{'no_open': True,'no_create': True}" width="100%"/>
+                    </group>
+                    <group string="Inspection">
+                        <group>
+                            <field name="name"/>
+                            <field name="receive_time"/>
+                            <field name="quantity"/>
+                        </group>
+                        <group>
+                            <field name="inspection_time"/>
+                            <field name="inspection_description"/>
+                            <field name="is_qualified"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <group>
+                                <h5>Inspection Attachments</h5>
+                                <div name="button_box">
+                                    <button name="action_get_inspection_attachment_view" class="oe_stat_button" icon="fa-book" type="object">
+                                        <field name="x_inspection_attachment_number" string="Upload Product Inspection Attachments"/>
+                                    </button>
+                                </div>
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="product_inspection_xks_action_window" model="ir.actions.act_window">
+        <field name="name">product.inspection.xks.action</field>
+        <field name="res_model">product.inspection.xks</field>
+        <field name="view_mode">tree,form,search</field>
+    </record>
+
+</odoo>

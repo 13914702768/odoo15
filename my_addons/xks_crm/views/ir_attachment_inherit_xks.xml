@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+    <!-- 修改附件上传form页面 -->
+    <record id="ir_attachment_form_inherit_xks" model="ir.ui.view">
+        <field name="name">ir.attachment.form.inherit.xks</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mimetype']" position="attributes">
+                <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//group/group[2]" position="attributes">
+                <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//group/group[3]" position="attributes">
+                <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//group/group[4]" position="attributes">
+                <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+            <xpath expr="//group/group[5]" position="attributes">
+                <attribute  name="attrs">{'invisible': 1}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

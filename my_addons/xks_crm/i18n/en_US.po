@@ -1,0 +1,590 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* xks_crm
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20220622\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-02 03:07+0000\n"
+"PO-Revision-Date: 2022-08-02 03:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "), are you sure to create a new one?"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "<b attrs=\"{'invisible': [('is_company', '=', False)]}\">Address</b>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<i class=\"fa fa-gear\" role=\"img\" title=\"Switch to automatic "
+"probability\" aria-label=\"Switch to automatic probability\"/>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"fa fa-exclamation-triangle text-warning oe_edit_only\" "
+"title=\"By saving this change, the customer email will also be updated.\" "
+"attrs=\"{'invisible': [('partner_email_update', '=', False)]}\"/>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"fa fa-exclamation-triangle text-warning oe_edit_only\" "
+"title=\"By saving this change, the customer phone number will also be "
+"updated.\" attrs=\"{'invisible': [('partner_phone_update', '=', False)]}\"/>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('calendar_event_count', '&lt;', 2)]}\"> Meetings</span>\n"
+"                                    <span class=\"o_stat_text\" attrs=\"{'invisible': [('calendar_event_count', '&gt;', 1)]}\"> Meeting</span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"o_stat_text\" attrs=\"{'invisible': [('duplicate_lead_count', '&lt;', 2)]}\">Similar Leads</span>\n"
+"                                    <span class=\"o_stat_text\" attrs=\"{'invisible': [('duplicate_lead_count', '&gt;', 1)]}\">Similar Lead</span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"<span class=\"oe_grey p-2\" groups=\"crm.group_use_recurring_revenues\"> + </span>\n"
+"                                        <span class=\"oe_grey p-2\" groups=\"!crm.group_use_recurring_revenues\"> at </span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "<span class=\"oe_grey p-2\"> at </span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "<span class=\"oe_grey\"> %</span>"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid ""
+"A partner with the same <span><span class=\"o_vat_label\">Tax "
+"ID</span></span> already exists ("
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Add a description..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Address"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.actions.act_window,name:xks_crm.crm_xks_advance_confirmed
+msgid "Advance Confirmed Xks"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Agree Lead Application"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Analysis"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Archived"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "City"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Company Name..."
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Contact Information"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_crm_lead2opportunity_partner
+msgid "Convert Lead to Opportunity (not in mass)"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Country"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.actions.act_window,help:xks_crm.crm_xks_all_review_leads
+msgid "Create a Lead"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Create company"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_lead_status
+msgid "Current State"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Customer"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_res_partner__transactions_number
+#: model:ir.model.fields,field_description:xks_crm.field_res_users__transactions_number
+msgid "Deal Count"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "E.g. Monthly"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Email"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Extra Info"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Extra Information"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__accountant_id
+msgid "Financial Audit"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Advance Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Balance Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Business Negotiation Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Deal"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Examine Goods Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Offer a Plan Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Quote Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Go to Requirement Determination Stage"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Internal Notes"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_is_team_leader
+msgid "Is Team Leader"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_crm_lead__x_is_team_member
+msgid "Is Team Member"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_leads_review_tree_view_xks
+msgid "Lead"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_leads_review_tree_view_xks
+msgid "Leads"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.ui.menu,name:xks_crm.menu_crm_leads_review
+msgid "Leads Audit"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.actions.act_window,name:xks_crm.crm_xks_all_review_leads
+msgid "Leads Xks"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.actions.act_window,help:xks_crm.crm_xks_all_review_leads
+msgid ""
+"Leads are the qualification step before the creation of an opportunity."
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields,field_description:xks_crm.field_res_partner__leads_ids
+#: model:ir.model.fields,field_description:xks_crm.field_res_users__leads_ids
+msgid "Leads/Opportunity"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Lost"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Marketing"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Misc"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Mobile"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "More languages"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.actions.act_window,name:xks_crm.xks_old_customer_act_window
+msgid "Old Customer"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Opportunity Detail"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Partners"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Previous Orders"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_leads_review_tree_view_xks
+msgid "Probability (%)"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Refuse Leads"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.ui.menu,name:xks_crm.menu_crm_old_customer
+msgid "Regular Customer"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Remited Advance"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Remited Balance"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Request for Advance"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_inherit_xks_view_from
+msgid "Request for Balance"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model,name:xks_crm.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "State"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Street 2..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Street..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Tags..."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "This email is blacklisted for mass mailings. Click to unblacklist."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid ""
+"This phone number is blacklisted for SMS Marketing. Click to unblacklist."
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Title"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Tracking"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "Website"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "Won"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "ZIP"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_kanban_view
+msgid "at"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. BE0477472701"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Brandom Freeman"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Lumber Inc"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Mister"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+msgid "e.g. Product Pricing"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. Sales Director"
+msgstr ""
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.crm_lead_xks_view_form
+#: model_terms:ir.ui.view,arch_db:xks_crm.res_partner_xks_form_view
+msgid "e.g. https://www.odoo.com"
+msgstr ""
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__10
+msgid "Disagree Quotation"
+msgstr "Disagree Quotation"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__80
+msgid "Ship"
+msgstr "Ship"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__9
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Agree Quotation"
+msgstr "Agree Quotation"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__3
+msgid "Agree to apply for Business Opportunity"
+msgstr "Agree to apply for Business Opportunity"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__15
+msgid "Business Negotiation"
+msgstr "Business Negotiation"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__1
+msgid "Opportunity pending review"
+msgstr "Opportunity pending review"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__50
+msgid "Arrange Production"
+msgstr "Arrange Production"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__4
+msgid "Perfect Customer Information"
+msgstr "Perfect Customer Information"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__70
+msgid "Request for Balance"
+msgstr "Request for Balance"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__30
+msgid "Request for Advance"
+msgstr "Request for Advance"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__0
+msgid "Business Opportunities to Apply for"
+msgstr "Business Opportunities to Apply for"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__71
+msgid "to be confirm Balance"
+msgstr "to be confirm Balance"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__31
+msgid "to be confirm Advance"
+msgstr "to be confirm Advance"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__20
+msgid "Deal"
+msgstr "Deal"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__7
+msgid "In the Quotation"
+msgstr "In the Quotation"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__8
+msgid "Audit Quotation"
+msgstr "Audit Quotation"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Request for Quote"
+msgstr "Request for Quote"
+
+#. module: xks_crm
+#: model_terms:ir.ui.view,arch_db:xks_crm.order_inherit_xks_view_from
+msgid "Refuse Quotation"
+msgstr "Refuse Quotation"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__2
+msgid "Reduse Opportunity"
+msgstr "Reduse Opportunity"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__6
+msgid "Offer a Plan"
+msgstr "Offer a Plan"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__5
+msgid "Requirement Determination"
+msgstr "Requirement Determination"
+
+#. module: xks_crm
+#: model:ir.model.fields.selection,name:xks_crm.selection__crm_lead__x_lead_status__60
+msgid "Examine Goods"
+msgstr "Examine Goods"

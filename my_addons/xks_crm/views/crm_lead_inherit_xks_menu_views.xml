@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+
+      <!-- 线索审核 -->
+<!--      <menuitem name="Leads Audit"-->
+<!--              id="menu_crm_leads_review"-->
+<!--              parent="crm.crm_menu_sales"-->
+<!--              action="crm_xks_all_review_leads"-->
+<!--              sequence="6"-->
+<!--              groups="sales_team.group_sale_manager"/>-->
+
+      <!-- 预付款确认 -->
+<!--      <menuitem name="Confirm Advance"-->
+<!--              id="menu_crm_advance_confirmed"-->
+<!--              parent="crm.crm_menu_sales"-->
+<!--              action="crm_xks_advance_confirmed"-->
+<!--              sequence="7"-->
+<!--              groups="sales_team.group_sale_manager"/>-->
+
+      <!-- 老客户 -->
+<!--      <menuitem name="Regular Customer"-->
+<!--              id="menu_crm_old_customer"-->
+<!--              parent="crm.crm_menu_sales"-->
+<!--              action="xks_old_customer_act_window"-->
+<!--              sequence="8"/>-->
+
+</odoo>

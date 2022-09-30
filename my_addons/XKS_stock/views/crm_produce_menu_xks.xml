@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK" ?>
+<odoo>
+
+    <!-- 一级菜单 -->
+    <menuitem id="crm_produce_xks_menu_action" name="旭科晟生产" sequence="20"/>
+    <!-- 二级菜单 -->
+    <menuitem id="crm_produce_xks_sec_menu"
+              name="设备采购"
+              parent="crm_produce_xks_menu_action"
+              action="XKS_stock.crm_produce_xks_action_window"
+              sequence="20"/>
+
+</odoo>
